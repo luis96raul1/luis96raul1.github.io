@@ -22,7 +22,9 @@ const HeaderMenu=styled.div(css`
 export default function Header() {
   return (
     <HeaderStyled>
-      <div>
+      <div css={css`
+        cursor: pointer;
+        `}onClick={()=>window.location.replace('/home')}>
         <img src={logo} height='75' alt="logo" />
       </div>
       <HeaderMenu>
