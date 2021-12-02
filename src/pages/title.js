@@ -4,7 +4,8 @@ import styled from '@emotion/styled';
 import logo from '../assets/images/logo.jpg';
 import githubIcon from '../assets/icons/github.svg';
 import linkedinIcon from '../assets/icons/linkedin.svg';
-import arrowIcon from '../assets/icons/arrow.png'
+import arrowIcon from '../assets/icons/arrow.png';
+import Header from '../components/header';
 
 const MainContent = styled.div(css`
       display: grid;
@@ -25,6 +26,7 @@ const LinksContainer = styled.div(css`
 export default function Title(){
   return (
     <>
+    <Header />
     <MainContent>
       <div className="slider">
         <div className="container">
@@ -47,9 +49,9 @@ export default function Title(){
           Desarrollador, apasionado por la tecnología y sus nuevas tendencias.
         </div>
         <LinksContainer>
-          <a href='https://www.linkedin.com/in/luis-talavera-llerena/' target="blank">
-            <img src={githubIcon} height="54" alt="github" /></a>
           <a href='https://github.com/luis96raul1' target="blank">
+            <img src={githubIcon} height="54" alt="github" /></a>
+          <a href='https://www.linkedin.com/in/luis-talavera-llerena/' target="blank">
             <img src={linkedinIcon} height="74" alt="linkedin" /></a>
         </LinksContainer>
       </div>
@@ -59,12 +61,27 @@ export default function Title(){
       display: flex;
       align-items: center;
       flex-direction: column;
-      `}>
+      cursor: pointer;
+      @media (max-height: 768px) {
+        margin-top: -35px;
+      }
+      `}
+      onClick={()=>window.location.replace('work')} >
       Mira mi trabajo
       <img css={css`
-        padding-top: 0.5rem;
         animation: down 2s;
         animation-iteration-count: infinite;
+        @keyframes down {
+          0% {
+            padding-top: 0.5rem;
+          }
+          50%{
+            padding-top: 1.5rem;
+          }
+          100%{
+            padding-top: 0.5rem;
+          }
+        }
         `} src={arrowIcon} height="30" alt="arrow" />
     </div>
     </>

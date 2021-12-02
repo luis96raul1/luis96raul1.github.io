@@ -1,17 +1,24 @@
-import Header from './components/header';
 import Title from './pages/title';
 import Work from './pages/work';
-// import { GlobalStyle } from './styles/global';
-// import { TimelineMax, TweenMax } from "gsap"
-// import ScrollMagic from "scrollmagic"
-// import { ScrollMagicPluginGsap } from 'scrollmagic-plugin-gsap';
+import { BrowserRouter as Router,Routes, Route } from "react-router-dom";
+
+import * as ScrollMagic from "scrollmagic";
+import { TimelineMax, TweenMax } from "gsap";
+import { ScrollMagicPluginGsap } from 'scrollmagic-plugin-gsap';
+
+ScrollMagicPluginGsap(ScrollMagic, TweenMax, TimelineMax);
+// There you can use setTween() in ScrollMagic Scene with no problems
 
 function App() {
   return (
     <div>
-        <Header />
-        <Title/>
-        <Work/>
+      <Router>
+        <Routes>
+          <Route path="home" element={<Title/>}/>
+          <Route path="work" element={<Work/>}/>
+        </Routes>
+      </Router>
+
     </div>
   );
 }

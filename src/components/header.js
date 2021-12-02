@@ -18,6 +18,12 @@ const HeaderMenu=styled.div(css`
         justify-content: space-around;
         width: 350px;
 `)
+const HeaderLink=styled.div(css`
+      cursor: pointer;
+      &:hover{
+        color: #5CB1B5;
+      }
+`)
 
 export default function Header() {
   return (
@@ -28,9 +34,9 @@ export default function Header() {
         <img src={logo} height='75' alt="logo" />
       </div>
       <HeaderMenu>
-        <div>Habilidades</div>
-        <div>Trabajos</div>
-        <div>Contacto</div>
+        <HeaderLink>Habilidades</HeaderLink>
+        <HeaderLink>Trabajos</HeaderLink>
+        <HeaderLink>Contacto</HeaderLink>
       </HeaderMenu>
     </HeaderStyled>
   )}
