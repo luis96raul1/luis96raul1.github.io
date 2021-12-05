@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/static/css/main.605df5ed.chunk.css",
+    "main.js": "/static/js/main.c8f6fce0.chunk.js",
+    "main.js.map": "/static/js/main.c8f6fce0.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.7cce9d71.js",
+    "runtime-main.js.map": "/static/js/runtime-main.7cce9d71.js.map",
+    "static/js/2.9f7bf67d.chunk.js": "/static/js/2.9f7bf67d.chunk.js",
+    "static/js/2.9f7bf67d.chunk.js.map": "/static/js/2.9f7bf67d.chunk.js.map",
+    "static/js/3.b48f3514.chunk.js": "/static/js/3.b48f3514.chunk.js",
+    "static/js/3.b48f3514.chunk.js.map": "/static/js/3.b48f3514.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.605df5ed.chunk.css.map": "/static/css/main.605df5ed.chunk.css.map",
+    "static/js/2.9f7bf67d.chunk.js.LICENSE.txt": "/static/js/2.9f7bf67d.chunk.js.LICENSE.txt",
+    "static/media/CodeableTesting1.a949a24e.png": "/static/media/CodeableTesting1.a949a24e.png",
+    "static/media/CodeableTesting2.0754fc71.png": "/static/media/CodeableTesting2.0754fc71.png",
+    "static/media/index.css": "/static/media/Ubuntu.920db6df.jpg",
+    "static/media/github.bd0927a0.svg": "/static/media/github.bd0927a0.svg",
+    "static/media/linkedin.da005e0b.svg": "/static/media/linkedin.da005e0b.svg",
+    "static/media/logo.a131ecdf.jpg": "/static/media/logo.a131ecdf.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7cce9d71.js",
+    "static/js/2.9f7bf67d.chunk.js",
+    "static/css/main.605df5ed.chunk.css",
+    "static/js/main.c8f6fce0.chunk.js"
+  ]
+}
