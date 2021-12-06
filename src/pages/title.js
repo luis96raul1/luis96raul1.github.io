@@ -5,7 +5,6 @@ import logo from '../assets/images/logo.jpg';
 import githubIcon from '../assets/icons/github.svg';
 import linkedinIcon from '../assets/icons/linkedin.svg';
 import arrowIcon from '../assets/icons/arrow.png';
-import Header from '../components/header';
 
 const MainContent = styled.div(css`
       display: grid;
@@ -13,7 +12,7 @@ const MainContent = styled.div(css`
       align-items: center;
       justify-items: center;
       box-sizing: border-box;
-      height: 80vh;
+      height: 85vh;
 `)
 
 const LinksContainer = styled.div(css`
@@ -26,7 +25,6 @@ const LinksContainer = styled.div(css`
 export default function Title(){
   return (
     <>
-    <Header />
     <MainContent>
       <div className="slider">
         <div className="container">
@@ -62,11 +60,12 @@ export default function Title(){
       align-items: center;
       flex-direction: column;
       cursor: pointer;
+      height: 4.5rem;
       @media (max-height: 768px) {
         margin-top: -35px;
       }
       `}
-      onClick={()=>window.location.replace('work')} >
+      onClick={()=>window.location.replace('#work')} >
       Mira mi trabajo
       <img css={css`
         animation: down 2s;
@@ -82,7 +81,7 @@ export default function Title(){
             padding-top: 0.5rem;
           }
         }
-        `} src={arrowIcon} height="30" alt="arrow" />
+        `} src={arrowIcon} height="30" alt="arrow"/>
     </div>
     </>
   )

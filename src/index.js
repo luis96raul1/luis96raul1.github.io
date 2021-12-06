@@ -1,12 +1,18 @@
+// /** @jsxImportSource @emotion/react */
+// import { css } from '@emotion/react';
+
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
-import './assets/styles/index.css'
+
+import Header from './components/header';
+import App from './App';
+import './assets/styles/index.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      <Header/>
+      <App/>
   </React.StrictMode>,
   document.getElementById('root')
 );

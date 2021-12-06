@@ -1,50 +1,40 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Cancel from "../assets/icons/cancel.png"
 
 const Img = styled.div`
   border-radius: 20px;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
   line-height: 0;
+  background-color: white;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   `
 const ImgDiv = styled.div`
   margin-top: 25%;
   margin-left: 40%;
-  cursor: pointer;
   @media (max-width: 1700px) {
     margin-left: 25%;
   }
 `
 
-export default function ShowData({type,name,img1,img2,children}) {
-  const [hoverShow, setHoverShow] = useState(1);
+export default function ShowSkillData({type,name,image,children}) {
   const [fullShow, setFullShow] = useState();
 
-  useEffect(() => {
-    if(fullShow) {
-      const preview = document.getElementById("fullShow")
-      preview.scrollIntoView({behavior: "smooth"});
-    }
-  },[fullShow])
-  
-  function bigPicture(e){
-    setFullShow(e.target.src);
-    window.location.href = "#work";
-  };
-
   return(
-    <div id="#home" css={css`
+    <div css={css`
         display: grid;
-        grid-template-columns: 1.5fr 1fr;
+        grid-template-columns: 1fr 1fr;
         align-items: center;
         justify-items: center;
-        width: 90vw;
-        position: absolute;
+        width: 100%;
+        height: 100%;
         `}>
-          {fullShow && <div id="fullShow" css={css`
+          {fullShow && <div css={css`
             position: absolute;
             z-index: 2;
             display: flex;
@@ -65,20 +55,9 @@ export default function ShowData({type,name,img1,img2,children}) {
               <img css={css`height:85vh;`} src={fullShow} alt='bigPicture'/>
             </div>}
         <ImgDiv>
-          <Img css={css`
-            position: absolute;
-            top: 17%;
-            left: 3%;
-            z-index: ${hoverShow};
-            `}
-            onClick={(e)=>bigPicture(e)}>
-            <img src={img1} alt='imagen1' width="500"/>
-          </Img>
-          <Img
-            onMouseOver={() => setHoverShow(-1)}
-            onMouseOut={() => setHoverShow(1)}
-            onClick={(e)=>bigPicture(e)}>
-            <img src={img2} alt='imagen2' width="500"/>
+          <Img>
+            <img src={image} alt='imagen' width="500"/>
+            {console.log(image)}
           </Img>
         </ImgDiv>
         <div>

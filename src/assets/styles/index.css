@@ -7,6 +7,10 @@ body {
   color: #696969;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .slider {
   top: 0;
   bottom: 0;
@@ -297,4 +301,26 @@ Credit */
 .small {
   font-size: smaller;
   opacity: 0.75;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.35);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #5db3b7;
 }
