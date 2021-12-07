@@ -13,6 +13,17 @@ const MainContent = styled.div(css`
       box-sizing: border-box;
       height: 85vh;
       grid-template-columns: 1.5fr 1fr;
+      @media (max-height: 600px) {
+        height: 90vh;
+        div{
+        font-size: 20px;
+        text-align: center;
+      }
+      .myLogo{
+          width: 160px;
+          height: auto;
+        }
+    }
       @media (max-width: 768px) {
         grid-template-columns: none;
         grid-template-rows: 1fr 1fr;
@@ -34,7 +45,7 @@ const LinksContainer = styled.div(css`
       display: flex;
       align-items: center;
       justify-content: space-evenly;
-      @media (max-width: 768px) {
+      @media (max-width: 768px), (max-height: 600px)  {
         width: 100%;
         justify-content: center;
       }

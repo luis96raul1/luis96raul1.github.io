@@ -13,11 +13,6 @@ const Body = styled.div`
     grid-auto-flow: column;
     overflow-Y:hidden;
     height: 100vh;
-    .backgroundText{
-      /* background-color: red; */
-      /* display: flex; */
-      /* justify-content: center; */
-    }
 `
 const BackgroundText=styled.div`
   color: rgba(0,0,0,0.03);
@@ -29,6 +24,7 @@ const BackgroundText=styled.div`
   z-index: -1;
   font-weight: bold;
   overflow: hidden;
+  top: 130%; 
 `
 const works=[{img1:Image1,
               img2:Image2,

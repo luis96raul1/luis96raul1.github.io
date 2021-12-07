@@ -17,6 +17,18 @@ const ImgDiv = styled.div`
   @media (max-width: 1700px) {
     margin-left: 25%;
   }
+  @media (max-width: 1250px){
+    margin-top: 20%;
+    margin-left: 10%;
+    img{
+        width: 350px;
+        }
+    @media (max-width: 400px){
+      img{
+        width: 250px;
+      }
+    }
+  }
 `
 
 export default function ShowData({type,name,img1,img2,children}) {
@@ -32,8 +44,11 @@ export default function ShowData({type,name,img1,img2,children}) {
   
   function bigPicture(e){
     setFullShow(e.target.src);
-    window.location.href = "#work";
   };
+  
+  function exitPreview(){
+    setFullShow(false);
+  }
 
   return(
     <div id="#home" css={css`
@@ -43,6 +58,9 @@ export default function ShowData({type,name,img1,img2,children}) {
         justify-items: center;
         width: 90vw;
         position: absolute;
+        @media (max-width: 940px) {
+          grid-template-columns: none;
+        }
         `}>
           {fullShow && <div id="fullShow" css={css`
             position: absolute;
@@ -59,10 +77,15 @@ export default function ShowData({type,name,img1,img2,children}) {
                 right: 3%;
                 top: 3%;
                 cursor: pointer;
-                `} onClick={()=>setFullShow(false)}>
+                `} onClick={()=>exitPreview()}>
                 <img src={Cancel} alt='cancel'/>
               </div>
-              <img css={css`height:85vh;`} src={fullShow} alt='bigPicture'/>
+              <img css={css`height:85vh;
+                @media (max-width: 1300px) {
+                  width: 100vw;
+                  height: auto;
+                }
+                `} src={fullShow} alt='bigPicture'/>
             </div>}
         <ImgDiv>
           <Img css={css`
@@ -70,6 +93,10 @@ export default function ShowData({type,name,img1,img2,children}) {
             top: 17%;
             left: 3%;
             z-index: ${hoverShow};
+            @media (max-width: 768px){
+              top: -2%;
+              left: 0;
+            }
             `}
             onClick={(e)=>bigPicture(e)}>
             <img src={img1} alt='imagen1' width="500"/>
@@ -86,15 +113,25 @@ export default function ShowData({type,name,img1,img2,children}) {
             font-size: 2.5rem;
             color:#5CB1B5;
             font-weight: 100;
+            @media (max-width: 768px){
+              margin-top: 15%;
+              font-size: 1.5rem;
+            }
             `}>
             {type}
           </div>
           <div css={css`
             color: #5CB1B5;
             font-size: 3.5rem;
+            @media (max-width: 768px){
+              font-size: 2.3rem;
+            }
             `}>{name}</div>
           <div css={css`
             font-size: 1.5rem;
+            @media (max-width: 768px){
+              font-size: 1.2rem;
+            }
             `}>
             {children}
           </div>
