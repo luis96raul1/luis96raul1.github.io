@@ -37,8 +37,9 @@ export default function ShowData({type,name,img1,img2,children}) {
 
   useEffect(() => {
     if(fullShow) {
-      const preview = document.getElementById("fullShow")
-      preview.scrollIntoView({behavior: "smooth"});
+      document.documentElement.scrollTo({ top: document.documentElement.scrollTop+1, behavior: 'instant' });
+      const preview = document.getElementById("fullShow");
+      preview.scrollIntoView({inline:"center",behavior:"smooth"});
     }
   },[fullShow])
   
