@@ -8,11 +8,25 @@ import arrowIcon from '../assets/icons/arrow.png';
 
 const MainContent = styled.div(css`
       display: grid;
-      grid-template-columns: 1.5fr 1fr;
       align-items: center;
       justify-items: center;
       box-sizing: border-box;
       height: 85vh;
+      grid-template-columns: 1.5fr 1fr;
+      @media (max-width: 768px) {
+        grid-template-columns: none;
+        grid-template-rows: 1fr 1fr;
+        padding-top: 4.5rem;
+        height: 90vh;
+        div{
+          font-size: 20px;
+          text-align: center;
+        }
+        .myLogo{
+          width: 160px;
+          height: auto;
+        }
+      }
 `)
 
 const LinksContainer = styled.div(css`
@@ -20,6 +34,10 @@ const LinksContainer = styled.div(css`
       display: flex;
       align-items: center;
       justify-content: space-evenly;
+      @media (max-width: 768px) {
+        width: 100%;
+        justify-content: center;
+      }
 `)
 
 export default function Title(){
@@ -38,7 +56,7 @@ export default function Title(){
         padding: 0 50px;
         `}>
         <div>
-          <img src={logo} height="200" alt="logo" />
+          <img className='myLogo' src={logo} height="200" alt="logo" />
         </div>
         <div css={css`
           font-size: 1.5rem;
@@ -63,6 +81,9 @@ export default function Title(){
       height: 4.5rem;
       @media (max-height: 768px) {
         margin-top: -35px;
+      }
+      @media (max-width: 768px) {
+        font-size: 20px;
       }
       `}
       onClick={()=>window.location.replace('#work')} >

@@ -14,6 +14,11 @@ const HeaderStyled=styled.div(css`
       padding: 0 20px;
       width: 100%;
       box-sizing: border-box;
+      @media (max-width: 768px) {
+        height: 6em;
+        padding: 0 0px;
+        font-size: 0.8em;
+      }
 `)
 const HeaderMenu=styled.div(css`
         display: flex;
@@ -24,6 +29,7 @@ const HeaderMenu=styled.div(css`
 const HeaderLink=styled.a(css`
       cursor: pointer;
       text-decoration: none;
+      color: #696969;
       &:visited{
         color: #696969;
       }
