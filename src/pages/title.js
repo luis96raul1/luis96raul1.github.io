@@ -5,6 +5,8 @@ import logo from '../assets/images/logo.jpg';
 import githubIcon from '../assets/icons/github.svg';
 import linkedinIcon from '../assets/icons/linkedin.svg';
 import arrowIcon from '../assets/icons/arrow.png';
+import { languageContext } from '../components/contexts/languageContext';
+import { useContext } from 'react';
 
 const MainContent = styled.div(css`
       display: grid;
@@ -52,6 +54,8 @@ const LinksContainer = styled.div(css`
 `)
 
 export default function Title(){
+  const { language } = useContext(languageContext);
+
   return (
     <>
     <MainContent>
@@ -73,7 +77,7 @@ export default function Title(){
           font-size: 1.5rem;
           margin-bottom: 1.5rem;
           `}>
-          Desarrollador, apasionado por la tecnología y sus nuevas tendencias.
+          {language==='es'?'Desarrollador de software, apasionado por la tecnología y sus nuevas tendencias.':'Software developer, passionate about technology and its new trends.'}
         </div>
         <LinksContainer>
           <a href='https://github.com/luis96raul1' target="blank">
@@ -98,7 +102,7 @@ export default function Title(){
       }
       `}
       onClick={()=>window.location.replace('#work')} >
-      Mira mi trabajo
+      {language==='es'?'Mira mi trabajo':'See my work'}
       <img css={css`
         animation: down 2s;
         animation-iteration-count: infinite;

@@ -5,13 +5,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 
-import Header from './components/header';
 import App from './App';
 import './assets/styles/index.css';
 
 ReactDOM.render(
   <React.StrictMode>
-      <Header/>
       <App/>
   </React.StrictMode>,
   document.getElementById('root')

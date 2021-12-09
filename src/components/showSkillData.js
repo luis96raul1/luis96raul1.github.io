@@ -43,7 +43,6 @@ export default function ShowSkillData({name,image,children}) {
         <ImgDiv>
           <Img>
             <img src={image} alt='imagen' width="400"/>
-            {console.log(image)}
           </Img>
         </ImgDiv>
         <div css={css`

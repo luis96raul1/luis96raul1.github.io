@@ -1,12 +1,14 @@
 /** @jsxImportSource @emotion/react */
-import styled from "@emotion/styled";
-
 import { css } from "@emotion/react";
-// import StillInProgress from "../assets/images/stillProgress.jpg";
-
+import styled from "@emotion/styled";
+import { languageContext } from "../components/contexts/languageContext";
+import { useContext } from "react";
+import { HeaderLink } from "../components/header";
 import ShowData from "../components/showData";
 import Image1 from '../assets/images/CodeableTesting1.png';
 import Image2 from '../assets/images/CodeableTesting2.png';
+import Image3 from '../assets/images/personalPage1.png';
+import Image4 from '../assets/images/personalPage2.png';
 
 const Body = styled.div`
     display: grid;
@@ -19,38 +21,40 @@ const BackgroundText=styled.div`
   font-size: 21vw;
   position: absolute;
   width: 100%;
-  top: 110%;
   text-align: center;
   z-index: -1;
   font-weight: bold;
   overflow: hidden;
-  top: 130%; 
+  top: 120%; 
 `
 const works=[{img1:Image1,
               img2:Image2,
-              type:'Mi trabajo',
-              name:'Codeable Testing',
-              description: <span>Me encargue de la parte de fronted en la pagina de codeable, donde los usuarios que estan postulando para poder ser parte del bootcamp Codeable se pueden registrar brindando sus datos, luego son evaluados en ambitos de ingles y codigo con un tiempo definido para saber si cumplen con el conocimiento previo.</span>},
-              {img1:Image1,
-              img2:Image2,
-              type:'Mi trabajo',
-              name:'Codeable Testing 2',
-              description: <span>Me encargue de la parte de fronted en la pagina de codeable, donde los usuarios que estan postulando para poder ser parte del bootcamp Codeable se pueden registrar brindando sus datos, luego son evaluados en ambitos de ingles y codigo con un tiempo definido para saber si cumplen con el conocimiento previo.</span>}]
+              type:{'es':'Mi trabajo','en':'My work'},
+              name:{'es':'Evaluación Codeable','en':'Codeable Evaluation'},
+              description: {'es':<span>Estuve encargado de la parte frontend desarrollada en <strong>ReactJs</strong> de la <strong>página de registro y evaluación</strong> para los postulantes que deseen formar parte de <strong>Codeable</strong>. La evaluación considera varios factores tanto para la parte de código como la de inglés de: puntuación, tiempo para responder, 2 intentos para pasar la prueba de código satisfactoriamente, un editor de código embebido... La <strong>API</strong> fue hecha en <strong>Ruby on Rails</strong> y tiene las validaciones necesarias.</span>,
+                            'en':<span>I was in charge of the frontend developed in <strong>ReactJs</strong> of the <strong>registration and evaluation page</strong> for the applicants who want to become part of <strong>Codeable</strong>. The evaluation considers several factors both for the code as well as the English: score, time to answer, 2 attempts to pass the code test successfully, an embedded code editor... The <strong>API</strong> was made in <strong>Ruby on Rails</strong> and has the necessary validations.</span>}},
+              {img1:Image3,
+              img2:Image4,
+              type:{'es':'Mi trabajo','en':'My work'},
+              name:{'es':'Página personal','en':'Personal page'},
+              description: {'es':<span>Este pequeño proyecto hecho en <strong>ReactJs</strong> se irá actualizando conforme considere que tenga más material apto para ser incluido o vayan llegando ideas para mejorarlo.<br/> Si tienes alguna sugerencia, no dudes en hacérmela llegar puesto que me encanta el <strong>feedback</strong>.<br></br>Aqui está el <strong><HeaderLink href="https://github.com/luis96raul1/luis96raul1.github.io" target="blank">código</HeaderLink></strong> fuente por si deseas un poco más de información técnica la respecto.</span>,
+                            'en':<span>This small project developed in <strong>ReactJs</strong> will be updated as I think it has more material to be included or if there are ideas to improve it.<br/> If you have any suggestion, don't hesitate to make it reach me as I love the <strong>feedback</strong>.<br></br>Here is the <strong><HeaderLink href="https://github.com/luis96raul1/luis96raul1.github.io" target="blank">code</HeaderLink></strong> source for you to have some more technical information about it.</span>}}];
 
 export default function Work(){
+    const {language}=useContext(languageContext);
 
   return (
     <Body id="work">
       <BackgroundText className="backgroundText">
-        Mi trabajo
+        {language==='es'?'Mi trabajo':'My work'}
       </BackgroundText>
-        {works.map((work)=><div css={css`  
+        {works.map((work)=><div key={work.name.es} css={css`  
           width: 100vw;
           display: flex;
           align-items: center;
           justify-content: center;
           position: relative;`}>
-        <ShowData type={work.type} name={work.name} img1={work.img1} img2={work.img2}> {work.description} </ShowData></div>)}
+        <ShowData type={language==='es'?work.type.es:work.type.en} name={language==='es'?work.name.es:work.name.en} img1={work.img1} img2={work.img2}> {language==='es'?work.description.es:work.description.en} </ShowData></div>)}
     </Body>  
   )
 }
