@@ -30,7 +30,6 @@ const ImgDiv = styled.div`
     }
   }
 `
-
 export default function ShowData({type,name,img1,img2,children}) {
   const [hoverShow, setHoverShow] = useState(1);
   const [fullShow, setFullShow] = useState();

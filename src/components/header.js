@@ -94,7 +94,7 @@ export default function Header() {
         <HeaderLink onClick={()=>language==='es'?setLanguage('en'):setLanguage('es')}>{language==='es'?"English version":"Versión en español"}</HeaderLink>
         <HeaderLink href="#skill">{language==='es'?"Habilidades":"Skills"}</HeaderLink>
         <HeaderLink href="#work">{language==='es'?'Trabajos':'Works'}</HeaderLink>
-        <HeaderLink href="https://wa.me/982073665" target="blank">{language==='es'?'Contacto':'Contact'}</HeaderLink>
+        <HeaderLink href="https://wa.me/51982073665" target="blank">{language==='es'?'Contacto':'Contact'}</HeaderLink>
       </HeaderMenu>
     </HeaderStyled>
   )} 

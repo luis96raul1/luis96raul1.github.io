@@ -24,6 +24,7 @@ const Img = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
   `
 const ImgDiv = styled.div`
   display: flex;
