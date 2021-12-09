@@ -13,7 +13,7 @@ const Body = styled.div`
     height: 80%;
     text-align: center;
     img{
-      width: 60vw;
+      width: 45vw;
     }
   }
 `
@@ -51,9 +51,15 @@ export default function ShowSkillData({name,image,children}) {
           <div css={css`
             color: #5CB1B5;
             font-size: 3.5rem;
+            @media (max-width: 730px) {
+              font-size: 2.5rem;
+            }
             `}>{name}</div>
           <div css={css`
             font-size: 1.5rem;
+            @media (max-width: 730px) {
+              font-size: 1rem;
+            }
             `}>
             {children}
           </div>
