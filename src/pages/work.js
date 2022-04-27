@@ -9,6 +9,9 @@ import Image1 from '../assets/images/CodeableTesting1.png';
 import Image2 from '../assets/images/CodeableTesting2.png';
 import Image3 from '../assets/images/personalPage1.png';
 import Image4 from '../assets/images/personalPage2.png';
+import Image5 from '../assets/images/footloose-main.png';
+import Image6 from '../assets/images/footloose-store.png';
+
 
 const Body = styled.div`
     display: grid;
@@ -27,10 +30,16 @@ const BackgroundText=styled.div`
   overflow: hidden;
   top: 120%; 
 `
-const works=[{img1:Image1,
+const works=[ {img1:Image5,
+  img2:Image6,
+  type:{'es':'Mi trabajo','en':'My work'},
+  name:{'es':<a src="https://www.footloose.pe/" target="_blank">Footloose</a>,'en':<a src="https://www.footloose.pe/" target="_blank">Footloose</a>},
+  description: {'es':<span>Es mi trabajo actual, donde estoy a cargo del desarrollo frontend de la página de e-comerce de Footloose <strong>realizando rediseños, adaptaciones a mobile e incluso nuevas landings</strong>. El framework usado es <strong>Vtex</strong>, el cual provee una solución integral para la empresa en cada ámbito que es necesario. Pese a que dicho framework cuenta con muchísimos componentes prediseñados, algunos requierimientos son mas exigentes y debo crear nuevos componentes a la medida con ayuda de <strong>ReactJs</strong>.</span>,
+                'en':<span>It's my current job where I'm in charge of the frontend development of the Footloose e-commerce page, <strong>carrying out redesigns, adaptations to mobile and even new landings</strong>. The framework used is <strong>Vtex</strong>, which provides a comprehensive solution for the company in each area that is necessary. Although this framework has many predesigned components, some requirements are more demanding and I must create new custom components with the help of <strong>ReactJs</strong>.</span>}},
+              {img1:Image1,
               img2:Image2,
               type:{'es':'Mi trabajo','en':'My work'},
-              name:{'es':'Evaluación Codeable','en':'Codeable Evaluation'},
+              name:{'es':<a src="https://www.codeable.la/" target="_blank">Evaluación Codeable</a>,'en':<a src="https://www.codeable.la/" target="_blank">Evaluación Codeable</a>},
               description: {'es':<span>Estuve encargado de la parte frontend desarrollada en <strong>ReactJs</strong> de la <strong>página de registro y evaluación</strong> para los postulantes que deseen formar parte de <strong>Codeable</strong>. La evaluación considera varios factores tanto para la parte de código como la de inglés de: puntuación, tiempo para responder, 2 intentos para pasar la prueba de código satisfactoriamente, un editor de código embebido... La <strong>API</strong> fue hecha en <strong>Ruby on Rails</strong> y tiene las validaciones necesarias.</span>,
                             'en':<span>I was in charge of the frontend developed in <strong>ReactJs</strong> of the <strong>registration and evaluation page</strong> for the applicants who want to become part of <strong>Codeable</strong>. The evaluation considers several factors both for the code as well as the English: score, time to answer, 2 attempts to pass the code test successfully, an embedded code editor... The <strong>API</strong> was made in <strong>Ruby on Rails</strong> and has the necessary validations.</span>}},
               {img1:Image3,
