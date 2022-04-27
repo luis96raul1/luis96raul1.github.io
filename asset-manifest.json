@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/static/css/main.4a7fd647.chunk.css",
-    "main.js": "/static/js/main.16ac6df2.chunk.js",
-    "main.js.map": "/static/js/main.16ac6df2.chunk.js.map",
+    "main.js": "/static/js/main.752af3cd.chunk.js",
+    "main.js.map": "/static/js/main.752af3cd.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.66b0b1be.js",
     "runtime-main.js.map": "/static/js/runtime-main.66b0b1be.js.map",
     "static/js/2.f75ef1f9.chunk.js": "/static/js/2.f75ef1f9.chunk.js",
@@ -15,6 +15,8 @@
     "static/media/CodeableTesting1.a949a24e.png": "/static/media/CodeableTesting1.a949a24e.png",
     "static/media/CodeableTesting2.0754fc71.png": "/static/media/CodeableTesting2.0754fc71.png",
     "static/media/index.css": "/static/media/Ubuntu.920db6df.jpg",
+    "static/media/footloose-main.ff00d823.png": "/static/media/footloose-main.ff00d823.png",
+    "static/media/footloose-store.39cd2f1b.png": "/static/media/footloose-store.39cd2f1b.png",
     "static/media/github.bd0927a0.svg": "/static/media/github.bd0927a0.svg",
     "static/media/javaScriptLogo.c55884d5.png": "/static/media/javaScriptLogo.c55884d5.png",
     "static/media/linkedin.da005e0b.svg": "/static/media/linkedin.da005e0b.svg",
@@ -27,6 +29,6 @@
     "static/js/runtime-main.66b0b1be.js",
     "static/js/2.f75ef1f9.chunk.js",
     "static/css/main.4a7fd647.chunk.css",
-    "static/js/main.16ac6df2.chunk.js"
+    "static/js/main.752af3cd.chunk.js"
   ]
 }
