@@ -53,41 +53,41 @@ const LinksContainer = styled.div(css`
       }
 `)
 
-export default function Title(){
+export default function Title() {
   const { language } = useContext(languageContext);
 
   return (
     <>
-    <MainContent>
-      <div className="slider">
-        <div className="container">
-          <div className="slide x"></div>
-          <div className="slide y"></div>
-          <div className="slide z"></div>
-        </div>
-        <div className="shadow"></div>
-      </div>
-      <div css={css`
-        padding: 0 50px;
-        `}>
-        <div>
-          <img className='myLogo' src={logo} height="200" alt="logo" />
+      <MainContent>
+        <div className="slider">
+          <div className="container">
+            <div className="slide x"></div>
+            <div className="slide y"></div>
+            <div className="slide z"></div>
+          </div>
+          <div className="shadow"></div>
         </div>
         <div css={css`
+        padding: 0 50px;
+        `}>
+          <div>
+            <img className='myLogo' src={logo} height="200" alt="logo" />
+          </div>
+          <div css={css`
           font-size: 1.5rem;
           margin-bottom: 1.5rem;
           `}>
-          {language==='es'?'Desarrollador de software, apasionado por la tecnología y sus nuevas tendencias.':'Software developer, passionate about technology and its new trends.'}
+            {language === 'es' ? 'Desarrollador de software, apasionado por la tecnología y sus nuevas tendencias.' : 'Software developer, passionate about technology and its new trends.'}
+          </div>
+          <LinksContainer>
+            <a href='https://github.com/luis96raul1' target="blank">
+              <img src={githubIcon} height="54" alt="github" /></a>
+            <a href='https://www.linkedin.com/in/luis-talavera-llerena/' target="blank">
+              <img src={linkedinIcon} height="74" alt="linkedin" /></a>
+          </LinksContainer>
         </div>
-        <LinksContainer>
-          <a href='https://github.com/luis96raul1' target="blank">
-            <img src={githubIcon} height="54" alt="github" /></a>
-          <a href='https://www.linkedin.com/in/luis-talavera-llerena/' target="blank">
-            <img src={linkedinIcon} height="74" alt="linkedin" /></a>
-        </LinksContainer>
-      </div>
-    </MainContent>
-    <div css={css`
+      </MainContent>
+      <div css={css`
       font-size: 1.3rem;
       display: flex;
       align-items: center;
@@ -101,9 +101,9 @@ export default function Title(){
         font-size: 20px;
       }
       `}
-      onClick={()=>window.location.replace('#work')} >
-      {language==='es'?'Mira mi trabajo':'See my work'}
-      <img css={css`
+        onClick={() => window.location.replace('#work')} >
+        {language === 'es' ? 'Mira mi trabajo' : 'See my work'}
+        <img css={css`
         animation: down 2s;
         animation-iteration-count: infinite;
         @keyframes down {
@@ -117,8 +117,8 @@ export default function Title(){
             padding-top: 0.5rem;
           }
         }
-        `} src={arrowIcon} height="30" alt="arrow"/>
-    </div>
+        `} src={arrowIcon} height="30" alt="arrow" />
+      </div>
     </>
   )
 }

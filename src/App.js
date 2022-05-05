@@ -7,12 +7,12 @@ import { LanguageProvider } from './components/contexts/languageContext';
 function App() {
   return (
     <LanguageProvider>
-    <Header/>
-    <div id="home">
-        <Title/>
-        <Work/>
-        <Skill/>
-    </div>
+      <Header />
+      <div id="home">
+        <Title />
+        <Work />
+        <Skill />
+      </div>
     </LanguageProvider>
   );
 }

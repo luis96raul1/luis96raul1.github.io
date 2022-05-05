@@ -37,34 +37,34 @@ const ImgDiv = styled.div`
   }
 `
 
-export default function ShowSkillData({name,image,children}) {
+export default function ShowSkillData({ name, image, children }) {
 
-  return(
-    <Body> 
-        <ImgDiv>
-          <Img>
-            <img src={image} alt='imagen' width="400"/>
-          </Img>
-        </ImgDiv>
-        <div css={css`
+  return (
+    <Body>
+      <ImgDiv>
+        <Img>
+          <img src={image} alt='imagen' width="400" />
+        </Img>
+      </ImgDiv>
+      <div css={css`
           padding: 25px;
           `}>
-          <div css={css`
+        <div css={css`
             color: #5CB1B5;
             font-size: 3.5rem;
             @media (max-width: 730px) {
               font-size: 2.5rem;
             }
             `}>{name}</div>
-          <div css={css`
+        <div css={css`
             font-size: 1.5rem;
             @media (max-width: 730px) {
               font-size: 1rem;
             }
             `}>
-            {children}
-          </div>
+          {children}
         </div>
-      </Body>
+      </div>
+    </Body>
   )
 }

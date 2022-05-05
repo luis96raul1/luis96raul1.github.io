@@ -8,7 +8,7 @@ import logo from '../assets/images/logo.jpg'
 import sandwitchIcon from '../assets/icons/sandwichIcon.png'
 import cancel from '../assets/icons/cancel.png'
 
-const HeaderStyled=styled.div(css`
+const HeaderStyled = styled.div(css`
       position: fixed;
       background-color: white;
       z-index: 2;
@@ -25,7 +25,7 @@ const HeaderStyled=styled.div(css`
         font-size: 0.8em;
       }
 `);
-const HeaderMenu=styled.div(css`
+const HeaderMenu = styled.div(css`
         display: flex;
         flex-direction: row;
         justify-content: space-around;
@@ -34,7 +34,7 @@ const HeaderMenu=styled.div(css`
           display: none;
         }
 `);
-const SandwitchMenu=styled.div(css`
+const SandwitchMenu = styled.div(css`
       display: none;
       width: 450px;
       @media (max-width: 500px) {
@@ -44,7 +44,7 @@ const SandwitchMenu=styled.div(css`
         margin-right: 10vw;
       }
 `)
-export const HeaderLink=styled.a(css`
+export const HeaderLink = styled.a(css`
       cursor: pointer;
       text-decoration: none;
       color: #696969;
@@ -55,7 +55,7 @@ export const HeaderLink=styled.a(css`
         color: #5CB1B5;
       }
 `);
-const Menu=styled.ul(css`
+const Menu = styled.ul(css`
       position: absolute;
       display: flex;
       flex-direction: column;
@@ -68,33 +68,34 @@ const Menu=styled.ul(css`
 `)
 
 export default function Header() {
-  const {language, setLanguage} = useContext(languageContext);
+  const { language, setLanguage } = useContext(languageContext);
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <HeaderStyled>
       <div css={css`
         cursor: pointer;
-        `}onClick={()=>window.location.replace('#home')}>
+        `} onClick={() => window.location.replace('#home')}>
         <img src={logo} height='75' alt="logo" />
       </div>
       <SandwitchMenu>
-          {menuOpen?
-            <Menu>
-              <HeaderLink onClick={()=>language==='es'?setLanguage('en'):setLanguage('es')}>{language==='es'?"English version":"Versión en español"}</HeaderLink><br/>
-              <HeaderLink href="#skill">{language==='es'?"Habilidades":"Skills"}</HeaderLink><br/>
-              <HeaderLink href="#work">{language==='es'?'Trabajos':'Works'}</HeaderLink><br/>
-              <HeaderLink href="https://wa.me/982073665" target="blank">{language==='es'?'Contacto':'Contact'}</HeaderLink>
-            </Menu>:null}
-            <div>
-              <img onClick={()=>menuOpen?setMenuOpen(false):setMenuOpen(true)} src={menuOpen?cancel:sandwitchIcon} height='25' alt="logo" />
-            </div>
+        {menuOpen ?
+          <Menu>
+            <HeaderLink onClick={() => language === 'es' ? setLanguage('en') : setLanguage('es')}>{language === 'es' ? "English version" : "Versión en español"}</HeaderLink><br />
+            <HeaderLink href="#skill">{language === 'es' ? "Habilidades" : "Skills"}</HeaderLink><br />
+            <HeaderLink href="#work">{language === 'es' ? 'Trabajos' : 'Works'}</HeaderLink><br />
+            <HeaderLink href="https://wa.me/982073665" target="blank">{language === 'es' ? 'Contacto' : 'Contact'}</HeaderLink>
+          </Menu> : null}
+        <div>
+          <img onClick={() => menuOpen ? setMenuOpen(false) : setMenuOpen(true)} src={menuOpen ? cancel : sandwitchIcon} height='25' alt="logo" />
+        </div>
       </SandwitchMenu>
       <HeaderMenu>
-        <HeaderLink onClick={()=>language==='es'?setLanguage('en'):setLanguage('es')}>{language==='es'?"English version":"Versión en español"}</HeaderLink>
-        <HeaderLink href="#skill">{language==='es'?"Habilidades":"Skills"}</HeaderLink>
-        <HeaderLink href="#work">{language==='es'?'Trabajos':'Works'}</HeaderLink>
-        <HeaderLink href="https://wa.me/51982073665" target="blank">{language==='es'?'Contacto':'Contact'}</HeaderLink>
+        <HeaderLink onClick={() => language === 'es' ? setLanguage('en') : setLanguage('es')}>{language === 'es' ? "English version" : "Versión en español"}</HeaderLink>
+        <HeaderLink href="#skill">{language === 'es' ? "Habilidades" : "Skills"}</HeaderLink>
+        <HeaderLink href="#work">{language === 'es' ? 'Trabajos' : 'Works'}</HeaderLink>
+        <HeaderLink href="https://wa.me/51982073665" target="blank">{language === 'es' ? 'Contacto' : 'Contact'}</HeaderLink>
       </HeaderMenu>
     </HeaderStyled>
-  )} 
+  )
+} 
