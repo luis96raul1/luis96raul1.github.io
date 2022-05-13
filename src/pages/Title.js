@@ -53,12 +53,13 @@ const LinksContainer = styled.div(css`
       }
 `)
 
-export default function Title() {
+export const Title = () => {
   const { language } = useContext(languageContext);
 
   return (
     <>
       <MainContent>
+
         <div className="slider">
           <div className="container">
             <div className="slide x"></div>
@@ -67,6 +68,7 @@ export default function Title() {
           </div>
           <div className="shadow"></div>
         </div>
+
         <div css={css`
         padding: 0 50px;
         `}>

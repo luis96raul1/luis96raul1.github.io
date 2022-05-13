@@ -1,8 +1,6 @@
-/** @jsxImportSource @emotion/react */
-import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 import { languageContext } from "../components/contexts/languageContext";
-import { useContext } from "react";
+import { useContext, useReducer } from "react";
 import { HeaderLink } from "../components/header";
 import ShowData from "../components/showData";
 import Image1 from '../assets/images/CodeableTesting1.png';
@@ -11,26 +9,18 @@ import Image3 from '../assets/images/personalPage1.png';
 import Image4 from '../assets/images/personalPage2.png';
 import Image5 from '../assets/images/footloose-main.png';
 import Image6 from '../assets/images/footloose-store.png';
+// import { BackgroundText } from "../components/styleComponents/backgroundText";
+import { currentPageReducer } from "../components/reducer/currentPageReducer";
+import { StatusButton } from "../components/styleComponents/sliderBootstrap";
 
 
 const Body = styled.div`
-    display: grid;
-    grid-auto-flow: column;
-    overflow-Y:hidden;
     height: 100vh;
-`
-const BackgroundText = styled.div`
-  color: rgba(0,0,0,0.03);
-  font-size: 21vw;
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  z-index: -1;
-  font-weight: bold;
-  overflow: hidden;
-  top: 120%; 
+    display: flex;
+    align-items: center;
 `
 const works = [{
+  id: 1,
   img1: Image5,
   img2: Image6,
   type: { 'es': 'Mi trabajo', 'en': 'My work' },
@@ -41,6 +31,7 @@ const works = [{
   }
 },
 {
+  id: 2,
   img1: Image1,
   img2: Image2,
   type: { 'es': 'Mi trabajo', 'en': 'My work' },
@@ -51,6 +42,7 @@ const works = [{
   }
 },
 {
+  id: 3,
   img1: Image3,
   img2: Image4,
   type: { 'es': 'Mi trabajo', 'en': 'My work' },
@@ -61,21 +53,51 @@ const works = [{
   }
 }];
 
-export default function Work() {
+export const Work = () => {
   const { language } = useContext(languageContext);
+  const [currentPage, dispatch] = useReducer(currentPageReducer, 1);
 
+  const handleCurrentIndex = (index) => {
+    dispatch({ type: 'set', payload: index });
+  }
+  const handleNextPage = () => {
+    dispatch({ type: 'next', payload: works.length });
+  }
+
+  const handlePreviousPage = () => {
+    dispatch({ type: 'previous', payload: works.length });
+  }
   return (
-    <Body id="work">
-      <BackgroundText className="backgroundText">
-        {language === 'es' ? 'Mi trabajo' : 'My work'}
-      </BackgroundText>
-      {works.map((work) => <div key={work.name.es} css={css`
-          width: 100vw;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          position: relative;`}>
-        <ShowData type={language === 'es' ? work.type.es : work.type.en} name={language === 'es' ? work.name.es : work.name.en} img1={work.img1} img2={work.img2}> {language === 'es' ? work.description.es : work.description.en} </ShowData></div>)}
-    </Body>
+    <div id="work">
+      <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
+        <div className="carousel-indicators">
+          {works.map(work =>
+            work.id === currentPage ?
+              <StatusButton type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={work.id} className="active" aria-current="true" aria-label={`Slide ${work.id}`}></StatusButton>
+              : <StatusButton onClick={() => handleCurrentIndex(work.id)} type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={work.id} aria-label={`Slide ${work.id}`}></StatusButton>
+          )}
+
+        </div>
+        {/* <BackgroundText>
+            {language === 'es' ? 'Mi trabajo' : 'My work'}
+          </BackgroundText> */}
+        <Body className="carousel-inner">
+          {works.map(work => <div
+            key={work.id}
+            className={work.id === currentPage ? "carousel-item active" : "carousel-item"}
+          >
+            <ShowData type={language === 'es' ? work.type.es : work.type.en} name={language === 'es' ? work.name.es : work.name.en} img1={work.img1} img2={work.img2}> {language === 'es' ? work.description.es : work.description.en} </ShowData></div>)}
+        </Body>
+
+        <button onClick={handlePreviousPage} className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span className="visually-hidden">Previous</span>
+        </button>
+        <button onClick={handleNextPage} className="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+          <span className="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
   )
 }

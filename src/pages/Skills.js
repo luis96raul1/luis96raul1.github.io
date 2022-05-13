@@ -1,33 +1,26 @@
-/** @jsxImportSource @emotion/react */
 import styled from "@emotion/styled";
-import { css } from "@emotion/react";
 
-import ShowSkillData from "../components/showSkillData";
+import { ShowSkillData } from "../components/showSkillData";
 import { languageContext } from "../components/contexts/languageContext";
-import { useContext } from "react";
-import JavaScriptImage from '../assets/images/javaScriptLogo.png'
-import RubyOnRailsImage from '../assets/images/rubyOnRailsLogo.png'
-import ScrumImage from '../assets/images/scrumImage.png'
+import { useContext, useReducer } from "react";
+import { currentPageReducer } from "../components/reducer/currentPageReducer";
+
+import { BackgroundTextSk } from "../components/styleComponents/backgroundText";
+import { StatusButton } from "../components/styleComponents/sliderBootstrap";
+
+import JavaScriptImage from '../assets/images/javaScriptLogo.png';
+import RubyOnRailsImage from '../assets/images/rubyOnRailsLogo.png';
+import ScrumImage from '../assets/images/scrumImage.png';
 
 const Body = styled.div`
-    display: grid;
-    grid-auto-flow: column;
-    overflow-Y:hidden;
     height: 100vh;
+    display: flex;
+    align-items: center;
 `
-const BackgroundText = styled.div`
-  color: rgba(0,0,0,0.03);
-  width: 100%;
-  text-align: center;
-  font-size: 14vw;
-  position: absolute;
-  top: 225%;
-  z-index: -1;
-  font-weight: bold;
-  overflow: hidden;
-`
+
 const skills = [
   {
+    id: 1,
     name: 'Frontend',
     image: JavaScriptImage,
     description: {
@@ -36,6 +29,7 @@ const skills = [
     }
   },
   {
+    id: 2,
     name: 'Backend',
     image: RubyOnRailsImage,
     description: {
@@ -44,6 +38,7 @@ const skills = [
     }
   },
   {
+    id: 3,
     name: 'Agile',
     image: ScrumImage,
     description: {
@@ -52,26 +47,65 @@ const skills = [
     }
   },
 ]
-export default function Skill() {
+export const Skills = () => {
   const { language } = useContext(languageContext);
+  const [currentPage, dispatch] = useReducer(currentPageReducer, 1);
 
-  function horizontalScrolling(e) {
-    const element = document.getElementById('skill');
-    element.scrollLeft += e.deltaY;
+  const handleCurrentIndex = (index) => {
+    dispatch({ type: 'set', payload: index });
   }
 
+  const handleNextPage = () => {
+    dispatch({ type: 'next', payload: skills.length });
+  }
+
+  const handlePreviousPage = () => {
+    dispatch({ type: 'previous', payload: skills.length });
+  }
+
+  // function horizontalScrolling(e) {
+  //   const element = document.getElementById('skill');
+  //   element.scrollLeft += e.deltaY;
+  // }
+
   return (
-    <Body id="skill" onWheel={(e) => horizontalScrolling(e)}>
-      <BackgroundText>
-        {language === 'es' ? 'Mis habilidades' : 'My skills'}
-      </BackgroundText>
-      {skills.map((skill) => <div key={skill.name} css={css`  
-          width: 100vw;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          position: relative;`}>
-        <ShowSkillData type={skill.type} name={skill.name} image={skill.image}> {language === 'es' ? skill.description.es : skill.description.en} </ShowSkillData></div>)}
-    </Body>
+    // <Body id="skill" onWheel={(e) => horizontalScrolling(e)}>
+    <div id="skill">
+      <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
+
+        <div className="carousel-indicators">
+          {skills.map(skill =>
+            skill.id === currentPage ?
+              <StatusButton type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={skill.id} className="active" aria-current="true" aria-label={`Slide ${skill.id}`}></StatusButton>
+              : <StatusButton onClick={() => handleCurrentIndex(skill.id)} type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={skill.id} aria-label={`Slide ${skill.id}`}></StatusButton>
+          )}
+
+        </div>
+
+        <BackgroundTextSk>
+          {language === 'es' ? 'Mis habilidades' : 'My skills'}
+        </BackgroundTextSk>
+
+
+        <Body className="carousel-inner">
+          {skills.map(skill => <div
+            key={skill.name}
+            className={skill.id === currentPage ? "carousel-item active" : "carousel-item"}
+          >
+            <ShowSkillData type={skill.type} name={skill.name} image={skill.image}> {language === 'es' ? skill.description.es : skill.description.en} </ShowSkillData></div>)}
+        </Body>
+
+        <button onClick={handlePreviousPage} className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span className="visually-hidden">Previous</span>
+        </button>
+        <button onClick={handleNextPage} className="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+          <span className="carousel-control-next-icon" aria-hidden="true"></span>
+          <span className="visually-hidden">Next</span>
+        </button>
+
+
+      </div>
+    </div>
   )
 }

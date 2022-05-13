@@ -1,7 +1,7 @@
 import Header from './components/header';
-import Title from './pages/title';
-import Work from './pages/work';
-import Skill from './pages/skill';
+import { Title } from './pages/Title';
+import { Work } from './pages/Work';
+import { Skills } from './pages/Skills';
 import { LanguageProvider } from './components/contexts/languageContext';
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
       <div id="home">
         <Title />
         <Work />
-        <Skill />
+        <Skills />
       </div>
     </LanguageProvider>
   );
