@@ -22,18 +22,19 @@ const ImgDiv = styled.div`
   }
   @media (max-width: 1250px){
     margin-top: 20%;
-    margin-left: 10%;
+    margin-left: 20%;
+    margin-bottom: 5%;
     img{
-        width: 350px;
+        width: 450px;
         }
-    @media (max-width: 400px){
+    @media (max-width: 560px){
       img{
         width: 250px;
       }
     }
   }
 `
-export const ShowData = ({ type, name, img1, img2, children }) => {
+export const ShowData = ({ direction, id, currentPage, type, name, img1, img2, children }) => {
   const [hoverShow, setHoverShow] = useState(1);
   const { setFullShow } = useContext(ModalContext);
 
@@ -41,29 +42,25 @@ export const ShowData = ({ type, name, img1, img2, children }) => {
     setFullShow(e.target.src);
   };
 
-  return (
-    <div id="home" className="d-block w-100">
-      <div css={css`
-        display: grid;
-        grid-template-columns: 1.5fr 1fr;
-        align-items: center;
-        justify-items: center;
-        width: 90vw;
-        margin: auto;
-        @media (max-width: 940px) {
-          grid-template-columns: none;
-        }
-        `}>
+  const handleClass = (id) => {
+    if (id === currentPage) {
+      return direction === 'right' ? "carousel-item active animate__animated animate__backInRight" : "carousel-item active animate__animated animate__backInLeft"
+    } else {
+      return direction === 'left' ? "animate__animated animate__backOutRight carousel-item" : "animate__animated animate__backOutLeft carousel-item"
+    }
+  }
 
+  return (
+    <div id="home" className={`${handleClass(id)} d-block w-100`}>
+      <div className="image-main-container">
         <ImgDiv>
           <Img className="float-img" css={css`
             position: absolute;
             top: 17%;
             left: 6%;
             z-index: ${hoverShow};
-            @media (max-width: 768px){
-              top: -2%;
-              left: 0;
+            @media (max-width: 1400px){
+              top: 5%;
             }
             `}
             onClick={bigPicture}>

@@ -2,6 +2,7 @@
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
 
+
 const Body = styled.div`
     display: flex;
     flex-direction: row;
@@ -37,10 +38,18 @@ const ImgDiv = styled.div`
   }
 `
 
-export const ShowSkillData = ({ name, image, children }) => {
+export const ShowSkillData = ({ direction, id, currentPage, name, image, children }) => {
+
+  const handleClass = (id) => {
+    if (id === currentPage) {
+      return direction === 'right' ? "carousel-item active animate__animated animate__backInRight" : "carousel-item active animate__animated animate__backInLeft"
+    } else {
+      return direction === 'left' ? "animate__animated animate__backOutRight carousel-item" : "animate__animated animate__backOutLeft carousel-item"
+    }
+  }
 
   return (
-    <div className="d-block w-100">
+    <div className={`${handleClass(id)} d-block w-100`}>
       <Body>
         <ImgDiv>
           <Img>
@@ -67,6 +76,6 @@ export const ShowSkillData = ({ name, image, children }) => {
           </div>
         </div>
       </Body>
-    </div>
+    </div >
   )
 }

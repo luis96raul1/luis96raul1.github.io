@@ -2,13 +2,14 @@ import styled from "@emotion/styled";
 
 import { ShowSkillData } from "../components/showSkillData";
 import { languageContext } from "../components/contexts/LanguageContext";
-import { useContext, useReducer } from "react";
+import { useContext, useReducer, useEffect, useState } from "react";
 import { currentPageReducer } from "../components/reducer/currentPageReducer";
 
 import { BackgroundTextSk } from "../components/styleComponents/backgroundText";
 import { StatusButton } from "../components/styleComponents/sliderBootstrap";
 
 import { JavaScriptImage, RubyOnRailsImage, ScrumImage } from "../components/imagesImport/skillImages";
+import { CarouselButtons } from "../components/CarouselButtons";
 
 const Body = styled.div`
     height: 100vh;
@@ -48,17 +49,14 @@ const skills = [
 export const Skills = () => {
   const { language } = useContext(languageContext);
   const [currentPage, dispatch] = useReducer(currentPageReducer, 1);
+  const [lastPage, setLastPage] = useState({ index: 1, direction: 'right' });
+
+  useEffect(() => {
+    setLastPage((c) => ({ index: currentPage, direction: c.index < currentPage ? 'right' : 'left' }));
+  }, [currentPage, setLastPage])
 
   const handleCurrentIndex = (index) => {
     dispatch({ type: 'set', payload: index });
-  }
-
-  const handleNextPage = () => {
-    dispatch({ type: 'next', payload: skills.length });
-  }
-
-  const handlePreviousPage = () => {
-    dispatch({ type: 'previous', payload: skills.length });
   }
 
   return (
@@ -84,18 +82,10 @@ export const Skills = () => {
             key={skill.name}
             className={skill.id === currentPage ? "carousel-item active" : "carousel-item"}
           >
-            <ShowSkillData type={skill.type} name={skill.name} image={skill.image}> {language === 'es' ? skill.description.es : skill.description.en} </ShowSkillData></div>)}
+            <ShowSkillData direction={lastPage.direction} id={skill.id} currentPage={currentPage} type={skill.type} name={skill.name} image={skill.image}> {language === 'es' ? skill.description.es : skill.description.en} </ShowSkillData></div>)}
         </Body>
 
-        <button onClick={handlePreviousPage} className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Previous</span>
-        </button>
-        <button onClick={handleNextPage} className="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-          <span className="carousel-control-next-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Next</span>
-        </button>
-
+        <CarouselButtons data={skills} dispatch={dispatch} />
 
       </div>
     </div>

@@ -1,12 +1,13 @@
 import styled from "@emotion/styled";
 import { languageContext } from "../components/contexts/LanguageContext";
-import { useContext, useReducer } from "react";
+import { useContext, useReducer, useState, useEffect } from "react";
 import { HeaderLink } from "../components/HeaderOptions";
 import { ShowData } from "../components/ShowData";
 import { Image1, Image2, Image3, Image4, Image5, Image6 } from "../components/imagesImport/workImages";
 import { BackgroundText } from "../components/styleComponents/backgroundText";
 import { currentPageReducer } from "../components/reducer/currentPageReducer";
 import { StatusButton } from "../components/styleComponents/sliderBootstrap";
+import { CarouselButtons } from "../components/CarouselButtons";
 
 
 const Body = styled.div`
@@ -51,17 +52,16 @@ const works = [{
 export const Work = () => {
   const { language } = useContext(languageContext);
   const [currentPage, dispatch] = useReducer(currentPageReducer, 1);
+  const [lastPage, setLastPage] = useState({ index: 1, direction: 'right' });
+
+  useEffect(() => {
+    setLastPage((c) => ({ index: currentPage, direction: c.index < currentPage ? 'right' : 'left' }));
+  }, [currentPage, setLastPage])
 
   const handleCurrentIndex = (index) => {
     dispatch({ type: 'set', payload: index });
   }
-  const handleNextPage = () => {
-    dispatch({ type: 'next', payload: works.length });
-  }
 
-  const handlePreviousPage = () => {
-    dispatch({ type: 'previous', payload: works.length });
-  }
   return (
     <div id="work">
       <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
@@ -81,17 +81,11 @@ export const Work = () => {
             key={work.id}
             className={work.id === currentPage ? "carousel-item active" : "carousel-item"}
           >
-            <ShowData type={language === 'es' ? work.type.es : work.type.en} name={language === 'es' ? work.name.es : work.name.en} img1={work.img1} img2={work.img2}> {language === 'es' ? work.description.es : work.description.en} </ShowData></div>)}
+            <ShowData direction={lastPage.direction} id={work.id} currentPage={currentPage} type={language === 'es' ? work.type.es : work.type.en} name={language === 'es' ? work.name.es : work.name.en} img1={work.img1} img2={work.img2}> {language === 'es' ? work.description.es : work.description.en} </ShowData></div>)}
         </Body>
 
-        <button onClick={handlePreviousPage} className="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-          <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Previous</span>
-        </button>
-        <button onClick={handleNextPage} className="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-          <span className="carousel-control-next-icon" aria-hidden="true"></span>
-          <span className="visually-hidden">Next</span>
-        </button>
+        <CarouselButtons data={works} dispatch={dispatch} />
+
       </div>
     </div>
   )

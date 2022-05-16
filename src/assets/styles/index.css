@@ -378,5 +378,24 @@ Credit */
 #work{
   width: 99vw;
   height: 100vh;
-  /* z-index: ; */
+}
+
+/* .carousel-item{
+  display: block;
+} */
+
+.image-main-container{
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    align-items: center;
+    justify-items: center;
+    width: 85vw;
+    margin: auto;
+}
+
+@media (max-width: 1400px) {
+  .image-main-container{
+    grid-template-columns: none;
+    text-align: center;
+  }
 }
