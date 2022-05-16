@@ -1,16 +1,14 @@
 import styled from "@emotion/styled";
 
 import { ShowSkillData } from "../components/showSkillData";
-import { languageContext } from "../components/contexts/languageContext";
+import { languageContext } from "../components/contexts/LanguageContext";
 import { useContext, useReducer } from "react";
 import { currentPageReducer } from "../components/reducer/currentPageReducer";
 
 import { BackgroundTextSk } from "../components/styleComponents/backgroundText";
 import { StatusButton } from "../components/styleComponents/sliderBootstrap";
 
-import JavaScriptImage from '../assets/images/javaScriptLogo.png';
-import RubyOnRailsImage from '../assets/images/rubyOnRailsLogo.png';
-import ScrumImage from '../assets/images/scrumImage.png';
+import { JavaScriptImage, RubyOnRailsImage, ScrumImage } from "../components/imagesImport/skillImages";
 
 const Body = styled.div`
     height: 100vh;
@@ -63,21 +61,15 @@ export const Skills = () => {
     dispatch({ type: 'previous', payload: skills.length });
   }
 
-  // function horizontalScrolling(e) {
-  //   const element = document.getElementById('skill');
-  //   element.scrollLeft += e.deltaY;
-  // }
-
   return (
-    // <Body id="skill" onWheel={(e) => horizontalScrolling(e)}>
     <div id="skill">
       <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
 
         <div className="carousel-indicators">
           {skills.map(skill =>
             skill.id === currentPage ?
-              <StatusButton type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={skill.id} className="active" aria-current="true" aria-label={`Slide ${skill.id}`}></StatusButton>
-              : <StatusButton onClick={() => handleCurrentIndex(skill.id)} type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={skill.id} aria-label={`Slide ${skill.id}`}></StatusButton>
+              <StatusButton key={skill.name} type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={skill.id} className="active" aria-current="true" aria-label={`Slide ${skill.id}`}></StatusButton>
+              : <StatusButton key={skill.name} onClick={() => handleCurrentIndex(skill.id)} type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={skill.id} aria-label={`Slide ${skill.id}`}></StatusButton>
           )}
 
         </div>

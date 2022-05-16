@@ -5,7 +5,7 @@ import logo from '../assets/images/logo.jpg';
 import githubIcon from '../assets/icons/github.svg';
 import linkedinIcon from '../assets/icons/linkedin.svg';
 import arrowIcon from '../assets/icons/arrow.png';
-import { languageContext } from '../components/contexts/languageContext';
+import { languageContext } from '../components/contexts/LanguageContext';
 import { useContext } from 'react';
 
 const MainContent = styled.div(css`
@@ -57,7 +57,7 @@ export const Title = () => {
   const { language } = useContext(languageContext);
 
   return (
-    <>
+    <div id="home">
       <MainContent>
 
         <div className="slider">
@@ -121,6 +121,6 @@ export const Title = () => {
         }
         `} src={arrowIcon} height="30" alt="arrow" />
       </div>
-    </>
+    </div>
   )
 }

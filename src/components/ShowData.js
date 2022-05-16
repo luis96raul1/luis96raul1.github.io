@@ -1,8 +1,11 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import styled from "@emotion/styled";
-import { useEffect, useState } from "react";
-import Cancel from "../assets/icons/cancel.png"
+import { useState } from "react";
+import { useContext } from "react";
+
+
+import { ModalContext } from "./contexts/ModalContext";
 
 const Img = styled.div`
   border-radius: 20px;
@@ -30,25 +33,13 @@ const ImgDiv = styled.div`
     }
   }
 `
-export default function ShowData({ type, name, img1, img2, children }) {
+export const ShowData = ({ type, name, img1, img2, children }) => {
   const [hoverShow, setHoverShow] = useState(1);
-  const [fullShow, setFullShow] = useState();
+  const { setFullShow } = useContext(ModalContext);
 
-  useEffect(() => {
-    if (fullShow) {
-      document.documentElement.scrollTo({ top: document.documentElement.scrollTop + 1, behavior: 'instant' });
-      const preview = document.getElementById("fullShow");
-      preview.scrollIntoView({ inline: "center", behavior: "smooth" });
-    }
-  }, [fullShow])
-
-  function bigPicture(e) {
+  const bigPicture = (e) => {
     setFullShow(e.target.src);
   };
-
-  function exitPreview() {
-    setFullShow(false);
-  }
 
   return (
     <div id="home" className="d-block w-100">
@@ -63,33 +54,7 @@ export default function ShowData({ type, name, img1, img2, children }) {
           grid-template-columns: none;
         }
         `}>
-        {fullShow && <div id="fullShow" css={css`
-            position: absolute;
-            /* position: fixed;
-            inset: 0px; */
-            z-index: 2;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 99vw;
-            height: 100vh;
-            background-color: rgba(0,0,0,0.7);
-            `}>
-          <div css={css`
-                position: absolute;
-                right: 3%;
-                top: 3%;
-                cursor: pointer;
-                `} onClick={exitPreview}>
-            <img src={Cancel} alt='cancel' />
-          </div>
-          <img css={css`height:85vh;
-                @media (max-width: 1300px) {
-                  width: 100vw;
-                  height: auto;
-                }
-                `} src={fullShow} alt='bigPicture' />
-        </div>}
+
         <ImgDiv>
           <Img className="float-img" css={css`
             position: absolute;

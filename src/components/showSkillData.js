@@ -41,7 +41,6 @@ export const ShowSkillData = ({ name, image, children }) => {
 
   return (
     <div className="d-block w-100">
-
       <Body>
         <ImgDiv>
           <Img>
@@ -69,8 +68,5 @@ export const ShowSkillData = ({ name, image, children }) => {
         </div>
       </Body>
     </div>
-
-
-
   )
 }

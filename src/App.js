@@ -1,19 +1,20 @@
-import Header from './components/header';
+import { Header } from './components/Header';
 import { Title } from './pages/Title';
 import { Work } from './pages/Work';
 import { Skills } from './pages/Skills';
-import { LanguageProvider } from './components/contexts/languageContext';
+
+import { WrapperContext } from './components/contexts/WrapperContext';
+import { Modal } from './components/Modal';
 
 function App() {
   return (
-    <LanguageProvider>
+    <WrapperContext>
+      <Modal />
       <Header />
-      <div id="home">
-        <Title />
-        <Work />
-        <Skills />
-      </div>
-    </LanguageProvider>
+      <Title />
+      <Work />
+      <Skills />
+    </WrapperContext>
   );
 }
 

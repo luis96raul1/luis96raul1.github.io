@@ -1,15 +1,10 @@
 import styled from "@emotion/styled";
-import { languageContext } from "../components/contexts/languageContext";
+import { languageContext } from "../components/contexts/LanguageContext";
 import { useContext, useReducer } from "react";
-import { HeaderLink } from "../components/header";
-import ShowData from "../components/showData";
-import Image1 from '../assets/images/CodeableTesting1.png';
-import Image2 from '../assets/images/CodeableTesting2.png';
-import Image3 from '../assets/images/personalPage1.png';
-import Image4 from '../assets/images/personalPage2.png';
-import Image5 from '../assets/images/footloose-main.png';
-import Image6 from '../assets/images/footloose-store.png';
-// import { BackgroundText } from "../components/styleComponents/backgroundText";
+import { HeaderLink } from "../components/HeaderOptions";
+import { ShowData } from "../components/ShowData";
+import { Image1, Image2, Image3, Image4, Image5, Image6 } from "../components/imagesImport/workImages";
+import { BackgroundText } from "../components/styleComponents/backgroundText";
 import { currentPageReducer } from "../components/reducer/currentPageReducer";
 import { StatusButton } from "../components/styleComponents/sliderBootstrap";
 
@@ -73,14 +68,14 @@ export const Work = () => {
         <div className="carousel-indicators">
           {works.map(work =>
             work.id === currentPage ?
-              <StatusButton type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={work.id} className="active" aria-current="true" aria-label={`Slide ${work.id}`}></StatusButton>
-              : <StatusButton onClick={() => handleCurrentIndex(work.id)} type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={work.id} aria-label={`Slide ${work.id}`}></StatusButton>
+              <StatusButton key={work.id} type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={work.id} className="active" aria-current="true" aria-label={`Slide ${work.id}`}></StatusButton>
+              : <StatusButton key={work.id} onClick={() => handleCurrentIndex(work.id)} type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={work.id} aria-label={`Slide ${work.id}`}></StatusButton>
           )}
 
         </div>
-        {/* <BackgroundText>
-            {language === 'es' ? 'Mi trabajo' : 'My work'}
-          </BackgroundText> */}
+        <BackgroundText>
+          {language === 'es' ? 'Mi trabajo' : 'My work'}
+        </BackgroundText>
         <Body className="carousel-inner">
           {works.map(work => <div
             key={work.id}
