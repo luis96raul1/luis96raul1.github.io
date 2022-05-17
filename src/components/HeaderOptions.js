@@ -21,7 +21,7 @@ export const HeaderOptions = ({ menuOpen }) => {
   const { language, setLanguage } = useContext(languageContext);
 
   const handleClass = (container) => {
-    return `${container} animate__animated ${menuOpen ? 'animate__slideInRight' : 'animate__slideOutLeft'}`
+    return `${container} animate__animated ${menuOpen ? 'animate__slideInRight' : 'animate__slideOutLeft'} mobile`
   }
 
   return (
@@ -30,6 +30,11 @@ export const HeaderOptions = ({ menuOpen }) => {
       <HeaderLink className={handleClass('c2')} href="#skill">{language === 'es' ? "Habilidades" : "Skills"}</HeaderLink>
       <HeaderLink className={handleClass('c3')} href="#work">{language === 'es' ? 'Trabajos' : 'Jobs'}</HeaderLink>
       <HeaderLink className={handleClass('c4')} href="mailto:luis96raul1@gmail.com" target="blank">{language === 'es' ? 'Contacto' : 'Contact'}</HeaderLink>
+
+      <HeaderLink className="desktop" onClick={() => language === 'es' ? setLanguage('en') : setLanguage('es')}>{language === 'es' ? "English version" : "Versión en español"}</HeaderLink>
+      <HeaderLink className="desktop" href="#skill">{language === 'es' ? "Habilidades" : "Skills"}</HeaderLink>
+      <HeaderLink className="desktop" href="#work">{language === 'es' ? 'Trabajos' : 'Jobs'}</HeaderLink>
+      <HeaderLink className="desktop" href="mailto:luis96raul1@gmail.com" target="blank">{language === 'es' ? 'Contacto' : 'Contact'}</HeaderLink>
     </>
   )
 }

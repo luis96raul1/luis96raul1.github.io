@@ -7,7 +7,7 @@ import { currentPageReducer } from "../components/reducer/currentPageReducer";
 
 import { BackgroundTextSk } from "../components/styleComponents/backgroundText";
 
-import { JavaScriptImage, RubyOnRailsImage, ScrumImage } from "../components/imagesImport/skillImages";
+import { JavaScriptImage, RubyOnRailsImage, ScrumImage, GitHubImage } from "../components/imagesImport/skillImages";
 import { CarouselButtons } from "../components/CarouselButtons";
 import { CarouselIndicator } from "../components/CarouselIndicator";
 
@@ -41,6 +41,15 @@ const skills = [
   },
   {
     id: 3,
+    name: 'GitHub',
+    image: GitHubImage,
+    description: {
+      'es': <span>Llevo usando <strong>Git</strong> y <strong>Github</strong> bastante tiempo, tanto para llevar control sobre mis proyectos personales así como para cuando trabajo en equipo y así llevar el control de versiones. También usé <strong>GitHub Pages</strong> para hacer deploys de proyectos simples a manera de práctica, justo como este.</span>,
+      'en': <span>I use <strong>Git</strong> and <strong>Github</strong> for a long time, both for keeping control of my personal projects as well as for when I work in teams and as such keep the control of versions. I also used <strong>GitHub Pages</strong> to deploy simple projects as practice, just like this one.</span>
+    }
+  },
+  {
+    id: 4,
     name: 'Agile',
     image: ScrumImage,
     description: {

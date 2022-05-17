@@ -455,3 +455,15 @@ Credit */
 .c4 {
   --animate-duration: 1.2s;
 }
+
+@media (max-width:500px) {
+  .desktop {
+    display: none;
+  }
+}
+
+@media (min-width: 501px) {
+  .mobile {
+    display: none;
+  }
+}
