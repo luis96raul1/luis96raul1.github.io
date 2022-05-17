@@ -13,10 +13,12 @@ const Body = styled.div`
   @media (max-width: 900px) {
     text-align: center;
     flex-direction: column;
+    width: 90%;
     img{
       width: 44vw;
     }
   }
+
 `
 const Img = styled.div`
   border-radius: 20px;
@@ -33,7 +35,7 @@ const ImgDiv = styled.div`
   align-items: center;
   @media (max-width: 870px) {
     img{
-      width: 350px;
+      width: 250px;
     }
   }
 `
@@ -56,9 +58,7 @@ export const ShowSkillData = ({ direction, id, currentPage, name, image, childre
             <img src={image} alt='imagen' width="400" />
           </Img>
         </ImgDiv>
-        <div css={css`
-          padding: 25px;
-          `}>
+        <div className="showSkData-text-field">
           <div css={css`
             color: #5CB1B5;
             font-size: 3.5rem;

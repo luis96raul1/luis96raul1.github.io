@@ -15,6 +15,9 @@ const Body = styled.div`
     height: 100vh;
     display: flex;
     align-items: center;
+    @media (max-width: 400px) {
+      height: 93vh;
+    }
 `
 
 const skills = [
@@ -59,15 +62,19 @@ export const Skills = () => {
     dispatch({ type: 'set', payload: index });
   }
 
+  const onFocus = () => {
+    window.location.replace('#skill');
+  }
+
   return (
-    <div id="skill">
+    <div id="skill" onClick={onFocus}>
       <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
 
         <div className="carousel-indicators">
-          {skills.map(skill =>
-            skill.id === currentPage ?
-              <StatusButton key={skill.name} type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={skill.id} className="active" aria-current="true" aria-label={`Slide ${skill.id}`}></StatusButton>
-              : <StatusButton key={skill.name} onClick={() => handleCurrentIndex(skill.id)} type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={skill.id} aria-label={`Slide ${skill.id}`}></StatusButton>
+          {skills.map(({ name, id }) =>
+            id === currentPage ?
+              <StatusButton key={name} type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={id} className="active" aria-current="true" aria-label={`Slide ${id}`}></StatusButton>
+              : <StatusButton key={name} onClick={() => handleCurrentIndex(id)} type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={id} aria-label={`Slide ${id}`}></StatusButton>
           )}
 
         </div>
@@ -78,11 +85,11 @@ export const Skills = () => {
 
 
         <Body className="carousel-inner">
-          {skills.map(skill => <div
-            key={skill.name}
-            className={skill.id === currentPage ? "carousel-item active" : "carousel-item"}
+          {skills.map(({ name, id, type, image, description }) => <div
+            key={name}
+            className={id === currentPage ? "carousel-item active" : "carousel-item"}
           >
-            <ShowSkillData direction={lastPage.direction} id={skill.id} currentPage={currentPage} type={skill.type} name={skill.name} image={skill.image}> {language === 'es' ? skill.description.es : skill.description.en} </ShowSkillData></div>)}
+            <ShowSkillData direction={lastPage.direction} id={id} currentPage={currentPage} type={type} name={name} image={image}> {language === 'es' ? description.es : description.en} </ShowSkillData></div>)}
         </Body>
 
         <CarouselButtons data={skills} dispatch={dispatch} />

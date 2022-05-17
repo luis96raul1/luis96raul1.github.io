@@ -8,6 +8,7 @@ export const HeaderLink = styled.a`
       cursor: pointer;
       text-decoration: none;
       color: #696969;
+      padding: 10px;
       &:visited{
         color: #696969;
       }
@@ -16,15 +17,19 @@ export const HeaderLink = styled.a`
       }
 `;
 
-export const HeaderOptions = () => {
+export const HeaderOptions = ({ menuOpen }) => {
   const { language, setLanguage } = useContext(languageContext);
+
+  const handleClass = (container) => {
+    return `${container} animate__animated ${menuOpen ? 'animate__slideInRight' : 'animate__slideOutLeft'}`
+  }
 
   return (
     <>
-      <HeaderLink onClick={() => language === 'es' ? setLanguage('en') : setLanguage('es')}>{language === 'es' ? "English version" : "Versión en español"}</HeaderLink><br />
-      <HeaderLink href="#skill">{language === 'es' ? "Habilidades" : "Skills"}</HeaderLink><br />
-      <HeaderLink href="#work">{language === 'es' ? 'Trabajos' : 'Jobs'}</HeaderLink><br />
-      <HeaderLink href="mailto:luis96raul1@gmail.com" target="blank">{language === 'es' ? 'Contacto' : 'Contact'}</HeaderLink>
+      <HeaderLink className={handleClass('c1')} onClick={() => language === 'es' ? setLanguage('en') : setLanguage('es')}>{language === 'es' ? "English version" : "Versión en español"}</HeaderLink>
+      <HeaderLink className={handleClass('c2')} href="#skill">{language === 'es' ? "Habilidades" : "Skills"}</HeaderLink>
+      <HeaderLink className={handleClass('c3')} href="#work">{language === 'es' ? 'Trabajos' : 'Jobs'}</HeaderLink>
+      <HeaderLink className={handleClass('c4')} href="mailto:luis96raul1@gmail.com" target="blank">{language === 'es' ? 'Contacto' : 'Contact'}</HeaderLink>
     </>
   )
 }

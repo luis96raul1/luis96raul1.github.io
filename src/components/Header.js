@@ -70,10 +70,9 @@ export const Header = () => {
         <img src={logo} height='75' alt="logo" />
       </div>
       <SandwitchMenu>
-        {menuOpen &&
-          <Menu>
-            <HeaderOptions />
-          </Menu>}
+        <Menu className={`animate__animated ${menuOpen ? 'animate__zoomIn' : 'animate__zoomOut'}`}>
+          <HeaderOptions menuOpen={menuOpen} />
+        </Menu>
         <div>
           <img onClick={() => setMenuOpen(!menuOpen)} src={menuOpen ? cancel : sandwitchIcon} height='25' alt="logo" />
         </div>

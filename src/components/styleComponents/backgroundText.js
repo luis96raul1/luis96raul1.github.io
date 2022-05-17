@@ -5,11 +5,13 @@ export const BackgroundText = styled.div`
   font-size: 21vw;
   position: absolute;
   width: 100%;
-  text-align: center;
+  height: 100%;
   z-index: -1;
   font-weight: bold;
   overflow: hidden;
-  top: 25%; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 export const BackgroundTextSk = styled.div`
@@ -17,9 +19,11 @@ export const BackgroundTextSk = styled.div`
   font-size: 14vw;
   position: absolute;
   width: 100%;
-  text-align: center;
   z-index: -1;
   font-weight: bold;
   overflow: hidden;
-  top: 30%; 
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `

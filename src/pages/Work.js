@@ -62,14 +62,18 @@ export const Work = () => {
     dispatch({ type: 'set', payload: index });
   }
 
+  const onFocus = () => {
+    window.location.replace('#work');
+  }
+
   return (
-    <div id="work">
+    <div id="work" onClick={onFocus}>
       <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
         <div className="carousel-indicators">
-          {works.map(work =>
-            work.id === currentPage ?
-              <StatusButton key={work.id} type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={work.id} className="active" aria-current="true" aria-label={`Slide ${work.id}`}></StatusButton>
-              : <StatusButton key={work.id} onClick={() => handleCurrentIndex(work.id)} type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={work.id} aria-label={`Slide ${work.id}`}></StatusButton>
+          {works.map(({ id }) =>
+            id === currentPage ?
+              <StatusButton key={id} type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={id} className="active" aria-current="true" aria-label={`Slide ${id}`}></StatusButton>
+              : <StatusButton key={id} onClick={() => handleCurrentIndex(id)} type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={id} aria-label={`Slide ${id}`}></StatusButton>
           )}
 
         </div>
@@ -77,11 +81,11 @@ export const Work = () => {
           {language === 'es' ? 'Mi trabajo' : 'My work'}
         </BackgroundText>
         <Body className="carousel-inner">
-          {works.map(work => <div
-            key={work.id}
-            className={work.id === currentPage ? "carousel-item active" : "carousel-item"}
+          {works.map(({ id, type, name, description, img1, img2 }) => <div
+            key={id}
+            className={id === currentPage ? "carousel-item active" : "carousel-item"}
           >
-            <ShowData direction={lastPage.direction} id={work.id} currentPage={currentPage} type={language === 'es' ? work.type.es : work.type.en} name={language === 'es' ? work.name.es : work.name.en} img1={work.img1} img2={work.img2}> {language === 'es' ? work.description.es : work.description.en} </ShowData></div>)}
+            <ShowData direction={lastPage.direction} id={id} currentPage={currentPage} type={language === 'es' ? type.es : type.en} name={language === 'es' ? name.es : name.en} img1={img1} img2={img2}> {language === 'es' ? description.es : description.en} </ShowData></div>)}
         </Body>
 
         <CarouselButtons data={works} dispatch={dispatch} />
