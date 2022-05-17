@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.438a8312.css",
-    "main.js": "/static/js/main.f0e3919c.js",
+    "main.css": "/static/css/main.c256f47a.css",
+    "main.js": "/static/js/main.02e6163d.js",
     "static/media/footloose-main.png": "/static/media/footloose-main.ff00d823751a44d96697.png",
     "static/media/footloose-store.png": "/static/media/footloose-store.39cd2f1b7dd4ff85b092.png",
     "static/media/Css.jpeg": "/static/media/Css.dd201e2b4ee6eb6ad437.jpeg",
@@ -16,15 +16,16 @@
     "static/media/Html.svg": "/static/media/Html.04ff2a699c323b27c979.svg",
     "static/media/logo.jpg": "/static/media/logo.a131ecdf55bc090138f7.jpg",
     "static/media/rubyOnRailsLogo.png": "/static/media/rubyOnRailsLogo.8fb396593303477aa221.png",
+    "static/media/githubLogo.png": "/static/media/githubLogo.f39c756f113872775b40.png",
     "static/media/javaScriptLogo.png": "/static/media/javaScriptLogo.c55884d50880308717d1.png",
     "static/media/github.svg": "/static/media/github.bd0927a0c3faf83474b74a90763e2e21.svg",
     "index.html": "/index.html",
     "static/media/linkedin.svg": "/static/media/linkedin.da005e0b6c696f8f8906f3e15d038ff0.svg",
-    "main.438a8312.css.map": "/static/css/main.438a8312.css.map",
-    "main.f0e3919c.js.map": "/static/js/main.f0e3919c.js.map"
+    "main.c256f47a.css.map": "/static/css/main.c256f47a.css.map",
+    "main.02e6163d.js.map": "/static/js/main.02e6163d.js.map"
   },
   "entrypoints": [
-    "static/css/main.438a8312.css",
-    "static/js/main.f0e3919c.js"
+    "static/css/main.c256f47a.css",
+    "static/js/main.02e6163d.js"
   ]
 }
