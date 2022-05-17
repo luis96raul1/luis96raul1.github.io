@@ -6,8 +6,9 @@ import { ShowData } from "../components/ShowData";
 import { Image1, Image2, Image3, Image4, Image5, Image6 } from "../components/imagesImport/workImages";
 import { BackgroundText } from "../components/styleComponents/backgroundText";
 import { currentPageReducer } from "../components/reducer/currentPageReducer";
-import { StatusButton } from "../components/styleComponents/sliderBootstrap";
+
 import { CarouselButtons } from "../components/CarouselButtons";
+import { CarouselIndicator } from "../components/CarouselIndicator";
 
 
 const Body = styled.div`
@@ -55,7 +56,15 @@ export const Work = () => {
   const [lastPage, setLastPage] = useState({ index: 1, direction: 'right' });
 
   useEffect(() => {
-    setLastPage((c) => ({ index: currentPage, direction: c.index < currentPage ? 'right' : 'left' }));
+    const detDirection = (c) => {
+      const val = c.index - currentPage;
+      if (Math.abs(val) === 1) {
+        return val > 0 ? 'left' : 'right';
+      } else {
+        return val >= 1 ? 'right' : 'left';
+      }
+    }
+    setLastPage((c) => ({ index: currentPage, direction: detDirection(c) }));
   }, [currentPage, setLastPage])
 
   const handleCurrentIndex = (index) => {
@@ -69,14 +78,9 @@ export const Work = () => {
   return (
     <div id="work" onClick={onFocus}>
       <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
-        <div className="carousel-indicators">
-          {works.map(({ id }) =>
-            id === currentPage ?
-              <StatusButton key={id} type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={id} className="active" aria-current="true" aria-label={`Slide ${id}`}></StatusButton>
-              : <StatusButton key={id} onClick={() => handleCurrentIndex(id)} type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={id} aria-label={`Slide ${id}`}></StatusButton>
-          )}
 
-        </div>
+        <CarouselIndicator data={works} handleCurrentIndex={handleCurrentIndex} currentPage={currentPage} />
+
         <BackgroundText>
           {language === 'es' ? 'Mi trabajo' : 'My work'}
         </BackgroundText>

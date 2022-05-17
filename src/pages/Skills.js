@@ -6,10 +6,10 @@ import { useContext, useReducer, useEffect, useState } from "react";
 import { currentPageReducer } from "../components/reducer/currentPageReducer";
 
 import { BackgroundTextSk } from "../components/styleComponents/backgroundText";
-import { StatusButton } from "../components/styleComponents/sliderBootstrap";
 
 import { JavaScriptImage, RubyOnRailsImage, ScrumImage } from "../components/imagesImport/skillImages";
 import { CarouselButtons } from "../components/CarouselButtons";
+import { CarouselIndicator } from "../components/CarouselIndicator";
 
 const Body = styled.div`
     height: 100vh;
@@ -55,7 +55,15 @@ export const Skills = () => {
   const [lastPage, setLastPage] = useState({ index: 1, direction: 'right' });
 
   useEffect(() => {
-    setLastPage((c) => ({ index: currentPage, direction: c.index < currentPage ? 'right' : 'left' }));
+    const detDirection = (c) => {
+      const val = c.index - currentPage;
+      if (Math.abs(val) === 1) {
+        return val > 0 ? 'left' : 'right';
+      } else {
+        return val >= 1 ? 'right' : 'left';
+      }
+    }
+    setLastPage((c) => ({ index: currentPage, direction: detDirection(c) }));
   }, [currentPage, setLastPage])
 
   const handleCurrentIndex = (index) => {
@@ -70,14 +78,8 @@ export const Skills = () => {
     <div id="skill" onClick={onFocus}>
       <div id="carouselExampleIndicators" className="carousel slide" data-bs-ride="carousel">
 
-        <div className="carousel-indicators">
-          {skills.map(({ name, id }) =>
-            id === currentPage ?
-              <StatusButton key={name} type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={id} className="active" aria-current="true" aria-label={`Slide ${id}`}></StatusButton>
-              : <StatusButton key={name} onClick={() => handleCurrentIndex(id)} type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to={id} aria-label={`Slide ${id}`}></StatusButton>
-          )}
+        <CarouselIndicator data={skills} handleCurrentIndex={handleCurrentIndex} currentPage={currentPage} />
 
-        </div>
 
         <BackgroundTextSk>
           {language === 'es' ? 'Mis habilidades' : 'My skills'}
