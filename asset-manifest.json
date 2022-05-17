@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.4371364f.css",
-    "main.js": "/static/js/main.e882d007.js",
+    "main.css": "/static/css/main.438a8312.css",
+    "main.js": "/static/js/main.f0e3919c.js",
     "static/media/footloose-main.png": "/static/media/footloose-main.ff00d823751a44d96697.png",
     "static/media/footloose-store.png": "/static/media/footloose-store.39cd2f1b7dd4ff85b092.png",
     "static/media/Css.jpeg": "/static/media/Css.dd201e2b4ee6eb6ad437.jpeg",
@@ -20,11 +20,11 @@
     "static/media/github.svg": "/static/media/github.bd0927a0c3faf83474b74a90763e2e21.svg",
     "index.html": "/index.html",
     "static/media/linkedin.svg": "/static/media/linkedin.da005e0b6c696f8f8906f3e15d038ff0.svg",
-    "main.4371364f.css.map": "/static/css/main.4371364f.css.map",
-    "main.e882d007.js.map": "/static/js/main.e882d007.js.map"
+    "main.438a8312.css.map": "/static/css/main.438a8312.css.map",
+    "main.f0e3919c.js.map": "/static/js/main.f0e3919c.js.map"
   },
   "entrypoints": [
-    "static/css/main.4371364f.css",
-    "static/js/main.e882d007.js"
+    "static/css/main.438a8312.css",
+    "static/js/main.f0e3919c.js"
   ]
 }
