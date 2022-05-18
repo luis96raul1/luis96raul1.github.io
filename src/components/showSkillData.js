@@ -18,7 +18,14 @@ const Body = styled.div`
       width: 44vw;
     }
   }
-
+  @media (max-height: 600px) {
+    display: flex;
+    flex-direction: row;
+    img{
+      height: 50vh;
+      width:auto;
+    }
+  }
 `
 const Img = styled.div`
   border-radius: 20px;
@@ -65,11 +72,17 @@ export const ShowSkillData = ({ direction, id, currentPage, name, image, childre
             @media (max-width: 730px) {
               font-size: 2.5rem;
             }
+            @media (max-height: 600px) {
+              font-size: 2rem;
+            }
             `}>{name}</div>
           <div css={css`
             font-size: 1.5rem;
             @media (max-width: 730px) {
               font-size: 1rem;
+            }
+            @media (max-height: 600px) {
+              font-size: 0.8rem;
             }
             `}>
             {children}

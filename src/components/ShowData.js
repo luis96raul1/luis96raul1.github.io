@@ -12,6 +12,9 @@ const Img = styled.div`
   box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
   line-height: 0;
   overflow: hidden;
+  @media (max-height: 600px) {
+    margin: 15px;
+  }
   `
 const ImgDiv = styled.div`
   margin-top: 25%;
@@ -31,6 +34,14 @@ const ImgDiv = styled.div`
       img{
         width: 250px;
       }
+    }
+  }
+  @media (max-height: 600px) {
+    display: flex;
+    margin: auto;
+    img{
+      height: 25vh;
+      width: auto;
     }
   }
 `
@@ -61,6 +72,9 @@ export const ShowData = ({ direction, id, currentPage, type, name, img1, img2, c
             z-index: ${hoverShow};
             @media (max-width: 1400px){
               top: 5%;
+            }
+            @media (max-height: 600px) {
+              position: inherit;
             }
             `}
             onClick={bigPicture}>

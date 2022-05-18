@@ -39,6 +39,10 @@ a:active {
 
 
 @media (max-width: 768px) {
+  .title-to-job-pointer {
+    font-size: 20px;
+  }
+
   .type-container {
     margin-top: 15%;
     font-size: 1.5rem;
@@ -466,4 +470,44 @@ Credit */
   .mobile {
     display: none;
   }
+}
+
+.title-to-job-pointer {
+  font-size: 1.3rem;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  height: 4.5rem;
+}
+
+@media (max-height: 768px) {
+  .title-to-job-pointer {
+    margin-top: -35px;
+  }
+}
+
+.animate__flash {
+  --animate-duration: 2.5s;
+}
+
+/* heigth section */
+@media (max-height: 600px) {
+  .title-to-job-pointer {
+    font-size: 10px;
+  }
+
+  .type-container {
+    font-size: 13px;
+  }
+
+  .name-container,
+  .name-container>a {
+    font-size: 15px !important;
+  }
+
+  .content-container {
+    font-size: 10px;
+  }
+
 }

@@ -6,7 +6,8 @@ import githubIcon from '../assets/icons/github.svg';
 import linkedinIcon from '../assets/icons/linkedin.svg';
 import arrowIcon from '../assets/icons/arrow.png';
 import { languageContext } from '../components/contexts/LanguageContext';
-import { useContext } from 'react';
+import { useContext, memo } from 'react';
+import { TitleMessageAnimator } from '../components/TitleMessageAnimator';
 
 const MainContent = styled.div(css`
       display: grid;
@@ -18,13 +19,17 @@ const MainContent = styled.div(css`
       @media (max-height: 600px) {
         height: 90vh;
         div{
-        font-size: 20px;
+        font-size: 15px;
         text-align: center;
       }
+      img{
+        width: 50%;
+      }
       .myLogo{
-          width: 160px;
+          width: 150px;
           height: auto;
         }
+
     }
       @media (max-width: 768px) {
         grid-template-columns: none;
@@ -53,7 +58,7 @@ const LinksContainer = styled.div(css`
       }
 `)
 
-export const Title = () => {
+export const Title = memo(() => {
   const { language } = useContext(languageContext);
 
   return (
@@ -66,7 +71,7 @@ export const Title = () => {
             <div className="slide y"></div>
             <div className="slide z"></div>
           </div>
-          <div className="shadow"></div>
+          {/* <div className="shadow"></div> */}
         </div>
 
         <div css={css`
@@ -75,34 +80,20 @@ export const Title = () => {
           <div>
             <img className='myLogo' src={logo} height="200" alt="logo" />
           </div>
-          <div css={css`
-          font-size: 1.5rem;
-          margin-bottom: 1.5rem;
-          `}>
-            {language === 'es' ? 'Desarrollador de software, apasionado por la tecnología y sus nuevas tendencias.' : 'Software developer, passionate about technology and its new trends.'}
-          </div>
+
+          <TitleMessageAnimator message={language === 'es' ? 'Desarrollador de software, apasionado por la tecnología y sus nuevas tendencias.' : 'Software developer, passionate about technology and its new trends.'} />
+
           <LinksContainer>
             <a href='https://github.com/luis96raul1' target="blank">
               <img src={githubIcon} height="54" alt="github" /></a>
             <a href='https://www.linkedin.com/in/luis-talavera-llerena/' target="blank">
               <img src={linkedinIcon} height="74" alt="linkedin" /></a>
           </LinksContainer>
+
         </div>
       </MainContent>
-      <div css={css`
-      font-size: 1.3rem;
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      cursor: pointer;
-      height: 4.5rem;
-      @media (max-height: 768px) {
-        margin-top: -35px;
-      }
-      @media (max-width: 768px) {
-        font-size: 20px;
-      }
-      `}
+      <div
+        className="title-to-job-pointer"
         onClick={() => window.location.replace('#work')} >
         {language === 'es' ? 'Mira mi trabajo' : 'See my work'}
         <img css={css`
@@ -124,3 +115,4 @@ export const Title = () => {
     </div>
   )
 }
+)

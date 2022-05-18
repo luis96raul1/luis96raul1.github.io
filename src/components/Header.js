@@ -25,6 +25,13 @@ const HeaderStyled = styled.div`
         padding: 0 0px;
         font-size: 0.8em;
       }
+      @media (max-height: 600px) {
+        /* height: 3em; */
+        font-size: 0.6em;
+        img{
+          height: 15vh;
+        }
+      }
 `;
 const HeaderMenu = styled.div`
         display: flex;
