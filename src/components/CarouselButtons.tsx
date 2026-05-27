@@ -1,6 +1,12 @@
+import { Dispatch } from 'react';
+import { CarouselAction } from './reducer/currentPageReducer';
 
-export const CarouselButtons = ({ data, dispatch }) => {
+interface CarouselButtonsProps {
+  data: { id: number }[];
+  dispatch: Dispatch<CarouselAction>;
+}
 
+export const CarouselButtons = ({ data, dispatch }: CarouselButtonsProps) => {
   const handlePreviousPage = () => {
     dispatch({ type: 'previous', payload: data.length });
   }

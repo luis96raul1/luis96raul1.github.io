@@ -1,5 +1,9 @@
-export const currentPageReducer = (state, action) => {
+export type CarouselAction =
+  | { type: 'set'; payload: number }
+  | { type: 'next'; payload: number }
+  | { type: 'previous'; payload: number };
 
+export const currentPageReducer = (state: number, action: CarouselAction): number => {
   switch (action.type) {
     case 'set':
       return action.payload;
@@ -10,5 +14,4 @@ export const currentPageReducer = (state, action) => {
     default:
       return state;
   }
-
 }

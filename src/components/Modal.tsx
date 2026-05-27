@@ -7,7 +7,9 @@ import Cancel from "../assets/icons/cancel.png"
 export const Modal = () => {
   const { fullShow, setFullShow } = useContext(ModalContext);
 
-  const handleClose = (e) => !(e.target.alt === "bigPicture") && setFullShow(false);
+  const handleClose = (e: React.MouseEvent<HTMLDivElement>) => {
+    !((e.target as HTMLImageElement).alt === "bigPicture") && setFullShow(false);
+  }
 
   return (
     <>

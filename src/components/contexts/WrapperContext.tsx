@@ -1,11 +1,14 @@
-import { useState } from "react";
-
+import { useState, ReactNode } from "react";
 import { languageContext } from "./LanguageContext";
 import { ModalContext } from "./ModalContext";
 
-export const WrapperContext = ({ children }) => {
+interface WrapperContextProps {
+  children: ReactNode;
+}
+
+export const WrapperContext = ({ children }: WrapperContextProps) => {
   const [language, setLanguage] = useState('en');
-  const [fullShow, setFullShow] = useState(false);
+  const [fullShow, setFullShow] = useState<string | false>(false);
 
   return (
     <languageContext.Provider value={{ language, setLanguage }}>
