@@ -1,0 +1,45 @@
+@use 'tokens' as t;
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: clamp(1.5rem, 4vw, 4rem);
+  background: color-mix(in srgb, var(--text) 88%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  &__close {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: color-mix(in srgb, var(--bg) 14%, transparent);
+    color: var(--bg);
+    display: grid;
+    place-items: center;
+    transition: background var(--t-fast), transform var(--t-fast);
+
+    &:hover { background: var(--accent); transform: rotate(90deg); }
+    svg { width: 16px; height: 16px; }
+  }
+
+  &__frame {
+    max-width: min(1200px, 100%);
+    max-height: 100%;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+
+    img {
+      width: 100%;
+      max-height: 85vh;
+      object-fit: contain;
+      display: block;
+    }
+  }
+}

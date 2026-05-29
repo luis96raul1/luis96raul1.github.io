@@ -1,21 +1,28 @@
+import { LightboxProvider } from './store/LightboxContext';
 import { Header } from './components/Header';
-import { Title } from './pages/Title';
-import { Work } from './pages/Work';
-import { Skills } from './pages/Skills';
+import { Lightbox } from './components/Lightbox';
+import { Hero } from './sections/Hero';
+import { Work } from './sections/Work';
+import { Skills } from './sections/Skills';
+import { About } from './sections/About';
+import { Footer } from './sections/Footer';
+import { useSmoothScroll } from './hooks/useSmoothScroll';
 
-import { WrapperContext } from './components/contexts/WrapperContext';
-import { Modal } from './components/Modal';
+export default function App() {
+  useSmoothScroll();
 
-function App() {
   return (
-    <WrapperContext>
-      <Modal />
+    <LightboxProvider>
+      <span className="grain" aria-hidden="true" />
       <Header />
-      <Title />
-      <Work />
-      <Skills />
-    </WrapperContext>
+      <main>
+        <Hero />
+        <Work />
+        <Skills />
+        <About />
+      </main>
+      <Footer />
+      <Lightbox />
+    </LightboxProvider>
   );
 }
-
-export default App;

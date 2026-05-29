@@ -1,0 +1,94 @@
+@use 'tokens' as t;
+
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin: 0 auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  position: relative;
+  padding-block: clamp(5rem, 10vw, 9rem);
+  overflow: hidden;
+
+  &--alt    { background: var(--bg-alt); }
+  &--ink    { background: var(--text); color: var(--bg); }
+  &--narrow { padding-block: clamp(3rem, 6vw, 5rem); }
+
+  &__head {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+    gap: clamp(1.5rem, 4vw, 4rem);
+    align-items: end;
+    margin-bottom: clamp(3rem, 6vw, 5.5rem);
+
+    @media (max-width: t.$bp-md) {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+
+  &__index {
+    font-family: var(--font-mono, var(--font-body));
+    font-size: 0.78rem;
+    letter-spacing: 0.18em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    display: flex;
+    align-items: baseline;
+    gap: 0.55rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  &__title {
+    font-family: var(--font-display);
+    font-weight: 320;
+    font-variation-settings: 'opsz' 144, 'SOFT' 70;
+    font-size: clamp(2.6rem, 6vw, 4.6rem);
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    color: var(--text);
+
+    em {
+      font-style: italic;
+      color: var(--accent);
+      font-variation-settings: 'opsz' 144, 'SOFT' 100;
+    }
+  }
+}
+
+// Decorative editorial dividers
+.rule {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: var(--border);
+  border: 0;
+  margin: 0;
+}
+
+// Marquee / watermark text behind sections
+.watermark {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  user-select: none;
+  z-index: 0;
+
+  span {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    font-variation-settings: 'opsz' 144, 'SOFT' 100;
+    font-size: clamp(10rem, 22vw, 22rem);
+    line-height: 1;
+    color: var(--text);
+    opacity: 0.035;
+    letter-spacing: -0.04em;
+    white-space: nowrap;
+  }
+}

@@ -10,6 +10,14 @@
 
 # production
 /build
+/dist
+*.tsbuildinfo
+vite.config.js
+vite.config.d.ts
+
+# editor
+/.idea
+/.vscode
 
 # misc
 .DS_Store

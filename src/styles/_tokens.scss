@@ -1,0 +1,61 @@
+// ── Design tokens ─────────────────────────────────────────
+// Editorial cream/ink palette with a single warm accent.
+// All colors are exposed as CSS custom properties so JS can
+// read them at runtime; the SCSS vars below are convenience
+// for media queries / math at build time.
+
+:root {
+  // Surfaces
+  --bg:           #EFEAE0;   // primary parchment cream
+  --bg-alt:       #E6E0D2;   // alternating section
+  --surface:      #F6F1E5;   // raised card
+  --ink-overlay:  rgba(20, 17, 13, 0.04);
+
+  // Ink
+  --text:         #14110D;   // deep warm ink
+  --text-soft:    #3A352D;
+  --text-muted:   #6E665A;
+
+  // Accent (terracotta)
+  --accent:       #B8492A;
+  --accent-soft:  #D77B5E;
+  --accent-dark:  #8E3620;
+
+  // Lines / shadows
+  --border:       #D6CCB5;
+  --border-soft:  rgba(20, 17, 13, 0.08);
+  --shadow-sm:    0 1px 3px rgba(20, 17, 13, 0.04), 0 4px 16px rgba(20, 17, 13, 0.05);
+  --shadow-md:    0 4px 12px rgba(20, 17, 13, 0.06), 0 16px 40px rgba(20, 17, 13, 0.08);
+  --shadow-lg:    0 8px 24px rgba(20, 17, 13, 0.10), 0 32px 80px rgba(20, 17, 13, 0.14);
+
+  // Type
+  --font-display: 'Fraunces', 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Geist', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono:    'Geist Mono', ui-monospace, SFMono-Regular, monospace;
+
+  // Geometry
+  --radius-sm:    6px;
+  --radius-md:    14px;
+  --radius-lg:    24px;
+  --radius-pill:  999px;
+
+  // Motion
+  --ease-out:     cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out:  cubic-bezier(0.65, 0, 0.35, 1);
+  --t-fast:       180ms;
+  --t-med:        320ms;
+  --t-slow:       600ms;
+
+  // Layout
+  --container:    1400px;
+  --gutter:       clamp(1.25rem, 4vw, 4rem);
+  --header-h:     72px;
+}
+
+// Breakpoints (SCSS-only, for media queries)
+$bp-xs: 420px;
+$bp-sm: 640px;
+$bp-md: 820px;
+$bp-lg: 1100px;
+$bp-xl: 1400px;
+$bp-short: 640px;   // max-height shorthand

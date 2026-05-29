@@ -1,121 +1,129 @@
-/** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
-import styled from 'styled-components';
-
-import { HeaderOptions } from './HeaderOptions';
-import { useState, useContext } from 'react';
+import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { AnimatePresence, motion } from 'framer-motion';
 import logo from '../assets/images/logo.jpg';
-import sandwitchIcon from '../assets/icons/sandwichIcon.png';
-import cancel from '../assets/icons/cancel.png';
-import { ModalContext } from './contexts/ModalContext';
+import { navItems, sectionIds } from '../data/nav';
+import { useScrolled } from '../hooks/useScrolled';
+import { useActiveSection } from '../hooks/useActiveSection';
+import { Icon } from './Icon';
 
-const HeaderStyled = styled.div<{ value: number }>`
-  position: fixed;
-  background: rgba(249, 248, 245, 0.85);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  z-index: ${props => props.value};
-  height: 4.25rem;
-  border-bottom: 1px solid rgba(224, 221, 214, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 2.5rem;
-  width: 100%;
-  box-sizing: border-box;
-  @media (max-width: 400px) {
-    height: 5rem;
-    padding: 0 1rem;
-    font-size: 0.85em;
-  }
-  @media (max-height: 600px) {
-    font-size: 0.65em;
-    img { height: 12vh; }
-  }
-`;
+export function Header() {
+  const { t, i18n } = useTranslation();
+  const scrolled = useScrolled(24);
+  const active = useActiveSection(sectionIds);
+  const [open, setOpen] = useState(false);
 
-const HeaderMenu = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 0.25rem;
-  @media (max-width: 500px) { display: none; }
-`;
+  const otherLang = i18n.language === 'es' ? 'en' : 'es';
 
-const SandwitchMenu = styled.div`
-  display: none;
-  position: relative;
-  @media (max-width: 500px) {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-end;
-    margin-right: 1rem;
-  }
-`;
+  useEffect(() => {
+    document.body.style.overflow = open ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [open]);
 
-const Menu = styled.ul`
-  position: absolute;
-  top: calc(100% + 0.75rem);
-  right: 0;
-  display: flex;
-  flex-direction: column;
-  padding: 0.5rem;
-  min-width: 200px;
-  background: rgba(249, 248, 245, 0.96);
-  backdrop-filter: blur(18px);
-  -webkit-backdrop-filter: blur(18px);
-  z-index: 20;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.10), 0 0 0 1px rgba(224, 221, 214, 0.6);
-  border-radius: 12px;
-  list-style: none;
-  margin: 0;
-`;
-
-const HamburgerBtn = styled.button`
-  background: none;
-  border: none;
-  padding: 0.5rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 8px;
-  transition: background 0.18s ease;
-  &:hover { background: rgba(92, 177, 181, 0.10); }
-`;
-
-export const Header = () => {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const { fullShow } = useContext(ModalContext);
+  useEffect(() => {
+    const close = () => setOpen(false);
+    window.addEventListener('hashchange', close);
+    return () => window.removeEventListener('hashchange', close);
+  }, []);
 
   return (
-    <HeaderStyled value={fullShow ? 1 : 2}>
-      <div
-        css={css`cursor: pointer; display: flex; align-items: center;`}
-        onClick={() => window.location.replace('#home')}
-      >
-        <img src={logo} height='50' alt="logo" css={css`
-          border-radius: 50%;
-          object-fit: cover;
-          width: 42px;
-          height: 42px;
-          border: 1.5px solid rgba(224, 221, 214, 0.8);
-        `} />
+    <header className={`header ${scrolled ? 'is-scrolled' : ''}`}>
+      <div className="header__shell" aria-hidden="true" />
+      <div className="header__inner">
+        <a className="header__brand" href="#home" aria-label="Home">
+          <img className="header__mark" src={logo} alt="" />
+          <span className="header__name">
+            <strong>Luis Talavera</strong>
+            <span>Developer</span>
+          </span>
+        </a>
+
+        <nav className="header__nav" aria-label="Primary">
+          {navItems.map((item) => (
+            <a
+              key={item.id}
+              href={`#${item.id}`}
+              className={`navlink ${active === item.id ? 'is-active' : ''}`}
+            >
+              <span className="navlink__index">{item.index}</span>
+              <span>{t(item.key)}</span>
+            </a>
+          ))}
+        </nav>
+
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', position: 'relative', zIndex: 2 }}>
+          <button
+            className="header__lang"
+            onClick={() => i18n.changeLanguage(otherLang)}
+            aria-label={`Switch to ${otherLang.toUpperCase()}`}
+          >
+            {t('header.lang_toggle')}
+          </button>
+          <a className="header__cta" href="#contact">
+            {t('header.cta')}
+            <Icon name="arrow-up-right" size={14} />
+          </a>
+          <button
+            className={`hamburger ${open ? 'is-open' : ''}`}
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            aria-controls="mobile-drawer"
+            aria-label="Toggle menu"
+          >
+            <span /><span /><span />
+          </button>
+        </div>
       </div>
 
-      <SandwitchMenu>
-        <Menu className={`animate__animated ${menuOpen ? 'animate__zoomIn' : 'animate__zoomOut'}`}>
-          <HeaderOptions menuOpen={menuOpen} />
-        </Menu>
-        <HamburgerBtn onClick={() => setMenuOpen(!menuOpen)} aria-label="Toggle menu">
-          <img src={menuOpen ? cancel : sandwitchIcon} height='20' alt="menu" />
-        </HamburgerBtn>
-      </SandwitchMenu>
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            id="mobile-drawer"
+            className="drawer"
+            initial={{ opacity: 0, y: -16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            role="dialog"
+            aria-modal="true"
+          >
+            <motion.ul
+              className="drawer__list"
+              initial="hidden"
+              animate="show"
+              variants={{ show: { transition: { staggerChildren: 0.07, delayChildren: 0.08 } } }}
+            >
+              {navItems.map((item) => (
+                <motion.li
+                  key={item.id}
+                  variants={{
+                    hidden: { opacity: 0, y: 24 },
+                    show:   { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.16, 1, 0.3, 1] } }
+                  }}
+                >
+                  <a className="drawer__link" href={`#${item.id}`} onClick={() => setOpen(false)}>
+                    <span className="drawer__link-num">{item.index}</span>
+                    <span>
+                      {t(item.key)}{active === item.id && <em>.</em>}
+                    </span>
+                  </a>
+                </motion.li>
+              ))}
+            </motion.ul>
 
-      <HeaderMenu>
-        <HeaderOptions />
-      </HeaderMenu>
-    </HeaderStyled>
+            <motion.div
+              className="drawer__foot"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1, transition: { delay: 0.4 } }}
+            >
+              <button className="header__lang" onClick={() => i18n.changeLanguage(otherLang)}>
+                {t('header.lang_toggle')}
+              </button>
+              <a href="mailto:luis96raul1@gmail.com">luis96raul1@gmail.com</a>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
   );
 }

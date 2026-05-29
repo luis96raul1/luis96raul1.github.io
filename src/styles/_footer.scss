@@ -1,0 +1,80 @@
+@use 'tokens' as t;
+
+.footer {
+  background: var(--text);
+  color: var(--bg);
+  padding-block: clamp(4rem, 8vw, 7rem) 2rem;
+  position: relative;
+  overflow: hidden;
+
+  &__big {
+    font-family: var(--font-display);
+    font-weight: 280;
+    font-style: italic;
+    font-variation-settings: 'opsz' 144, 'SOFT' 100;
+    font-size: clamp(3rem, 11vw, 9rem);
+    line-height: 0.92;
+    letter-spacing: -0.035em;
+    color: var(--bg);
+    max-width: 14ch;
+
+    em { color: var(--accent-soft); font-style: italic; }
+  }
+
+  &__email {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-top: 2.5rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 300;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    color: var(--bg);
+    border-bottom: 1px solid color-mix(in srgb, var(--bg) 35%, transparent);
+    padding-bottom: 0.5rem;
+    transition: color var(--t-fast), border-color var(--t-fast);
+
+    &:hover { color: var(--accent-soft); border-color: var(--accent-soft); }
+
+    svg { width: 22px; height: 22px; align-self: center; }
+  }
+
+  &__row {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: clamp(4rem, 8vw, 6rem);
+    padding-top: 1.5rem;
+    border-top: 1px solid color-mix(in srgb, var(--bg) 18%, transparent);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    color: color-mix(in srgb, var(--bg) 65%, transparent);
+  }
+
+  &__links {
+    display: inline-flex;
+    gap: 0.5rem;
+  }
+
+  &__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    border: 1px solid color-mix(in srgb, var(--bg) 25%, transparent);
+    transition: color var(--t-fast), background var(--t-fast), border-color var(--t-fast), transform var(--t-fast);
+
+    svg { width: 16px; height: 16px; }
+
+    &:hover {
+      color: var(--text);
+      background: var(--bg);
+      border-color: var(--bg);
+      transform: translateY(-2px);
+    }
+  }
+}

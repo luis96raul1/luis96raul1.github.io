@@ -1,0 +1,95 @@
+{
+  "header": {
+    "work":    "Work",
+    "skills":  "Skills",
+    "about":   "About",
+    "contact": "Contact",
+    "lang_toggle": "ES",
+    "cta": "Get in touch"
+  },
+  "hero": {
+    "status": "Available for new work — 2026",
+    "title_pre":  "Software",
+    "title_emph": "craft",
+    "title_post": "for the modern web.",
+    "lede": "I'm Luis Talavera — a developer building thoughtful, performant interfaces from Lima, Perú.",
+    "cta_primary": "See selected work",
+    "cta_secondary": "Read about me",
+    "scroll": "Scroll",
+    "stack_label": "Currently shipping",
+    "stack_value": "React · TypeScript · VTEX",
+    "location_label": "Based in",
+    "location_value": "Lima, Perú"
+  },
+  "work": {
+    "eyebrow": "Selected work",
+    "title_pre":  "Things I've",
+    "title_emph": "built",
+    "title_post": ".",
+    "lede": "A short trail of products, tools and pages I've designed or shipped in the last few years.",
+    "view_site": "Visit site",
+    "case_study": "Case study"
+  },
+  "skills": {
+    "eyebrow": "Capabilities",
+    "title_pre":  "How I",
+    "title_emph": "work",
+    "title_post": ".",
+    "lede": "Frontend by default, with enough backend, tooling and process to ship end-to-end."
+  },
+  "about": {
+    "eyebrow": "About",
+    "title_pre":  "A developer who",
+    "title_emph": "sweats",
+    "title_post": "the details.",
+    "lede": "I care about how an interface feels under the finger — the rhythm of an animation, the weight of a typeface, the quiet of an empty state.",
+    "p1": "I've spent the last few years building e-commerce experiences in <strong>VTEX</strong> and shipping React apps end-to-end. Before that, I co-built the developer-evaluation platform at <strong>Codeable</strong>, where I learned to balance speed with the kind of polish a learner actually trusts.",
+    "p2": "Outside of work I'm usually in the browser dev tools, the terminal, or — more recently — a sketchbook trying to design before I code.",
+    "stat_years": "Years building",
+    "stat_projects": "Shipped projects",
+    "stat_coffee": "Cups of coffee"
+  },
+  "contact": {
+    "title_pre":  "Let's make",
+    "title_emph": "something",
+    "title_post": "good.",
+    "email": "luis96raul1@gmail.com",
+    "rights": "© 2026 Luis Talavera. All rights reserved.",
+    "built": "Designed & built in Lima"
+  },
+  "works": {
+    "footloose": {
+      "type": "E-commerce",
+      "name": "Footloose",
+      "description": "Current work — frontend on the <strong>Footloose</strong> e-commerce store. I lead redesigns, mobile adaptations and new landings on <strong>VTEX</strong>. Where VTEX components fall short, I drop into custom <strong>React</strong> to keep the brand and the conversion intact."
+    },
+    "codeable": {
+      "type": "EdTech platform",
+      "name": "Codeable evaluation",
+      "description": "Owned the <strong>React</strong> frontend of the registration + evaluation flow for <strong>Codeable</strong> applicants. Scored coding and English: timed attempts, an embedded code editor, retry logic. The <strong>Ruby on Rails</strong> API handled the heavy validation."
+    },
+    "personal": {
+      "type": "Personal lab",
+      "name": "This site",
+      "description": "An ongoing playground I rebuild whenever I learn something new. Currently <strong>React + Vite + Framer Motion + Lenis</strong>. <a href=\"https://github.com/luis96raul1/luis96raul1.github.io\" target=\"_blank\" rel=\"noreferrer\">Source is on GitHub</a> — feedback always welcome."
+    }
+  },
+  "skill": {
+    "frontend": {
+      "name": "Frontend",
+      "description": "<strong>React</strong> for interactive surfaces, <strong>TypeScript</strong> for guard rails, SCSS or Tailwind for systems. I lean on <strong>Framer Motion</strong> for motion and care a lot about the small details — focus rings, scroll behavior, prefers-reduced-motion."
+    },
+    "backend": {
+      "name": "Backend",
+      "description": "Started on <strong>Ruby</strong> + <strong>Rails</strong> — full-stack apps and APIs through my Codeable years. Relational (<strong>PostgreSQL</strong>) and document (<strong>Firebase</strong>) stores. Comfortable owning a small API end-to-end."
+    },
+    "github": {
+      "name": "GitHub & CI",
+      "description": "Long-time <strong>Git</strong> user, including <strong>GitHub Actions</strong> for CI, <strong>GitHub Pages</strong> for static deploys (this site, included). Clean histories, reviewable PRs, conventional commits where it fits."
+    },
+    "agile": {
+      "name": "Agile",
+      "description": "Trained in <strong>Scrum</strong> and shipped against it in teams. Funny enough, I'd been running sprint-shaped weeks with classmates before I knew the name for it. Process should serve the team — not the other way around."
+    }
+  }
+}
