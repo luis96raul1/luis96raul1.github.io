@@ -71,12 +71,21 @@ export function Work() {
               </div>
 
               <div className="case__visuals">
-                <button className="case__shot case__shot--back" onClick={() => open(w.shots[1])} aria-label={`Open ${t(`works.${w.key}.name`)} screenshot`}>
-                  <img src={w.shots[1]} alt={`${t(`works.${w.key}.name`)} — secondary`} loading="lazy" />
-                </button>
-                <button className="case__shot case__shot--front" onClick={() => open(w.shots[0])} aria-label={`Open ${t(`works.${w.key}.name`)} screenshot`}>
-                  <img src={w.shots[0]} alt={`${t(`works.${w.key}.name`)} — primary`} loading="lazy" />
-                </button>
+                {w.shots ? (
+                  <>
+                    <button className="case__shot case__shot--back" onClick={() => open(w.shots![1])} aria-label={`Open ${t(`works.${w.key}.name`)} screenshot`}>
+                      <img src={w.shots[1]} alt={`${t(`works.${w.key}.name`)} — secondary`} loading="lazy" />
+                    </button>
+                    <button className="case__shot case__shot--front" onClick={() => open(w.shots![0])} aria-label={`Open ${t(`works.${w.key}.name`)} screenshot`}>
+                      <img src={w.shots[0]} alt={`${t(`works.${w.key}.name`)} — primary`} loading="lazy" />
+                    </button>
+                  </>
+                ) : (
+                  <div className="case__placeholder" aria-hidden="true">
+                    <span className="case__placeholder-name">{t(`works.${w.key}.name`)}</span>
+                    <span className="case__placeholder-note">{t('work.coming_soon')}</span>
+                  </div>
+                )}
               </div>
             </Reveal>
           ))}

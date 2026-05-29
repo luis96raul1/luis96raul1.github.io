@@ -12,14 +12,14 @@
     "title_pre":  "Software",
     "title_emph": "craft",
     "title_post": "for the modern web.",
-    "lede": "I'm Luis Talavera — a developer building thoughtful, performant interfaces from Lima, Perú.",
+    "lede": "I'm Luis Talavera — a developer building thoughtful, performant interfaces from Arequipa, Perú.",
     "cta_primary": "See selected work",
     "cta_secondary": "Read about me",
     "scroll": "Scroll",
     "stack_label": "Currently shipping",
-    "stack_value": "React · TypeScript · VTEX",
+    "stack_value": "Svelte · Next.js · TypeScript",
     "location_label": "Based in",
-    "location_value": "Lima, Perú"
+    "location_value": "Arequipa, Perú"
   },
   "work": {
     "eyebrow": "Selected work",
@@ -28,7 +28,8 @@
     "title_post": ".",
     "lede": "A short trail of products, tools and pages I've designed or shipped in the last few years.",
     "view_site": "Visit site",
-    "case_study": "Case study"
+    "case_study": "Case study",
+    "coming_soon": "Visuals coming soon"
   },
   "skills": {
     "eyebrow": "Capabilities",
@@ -43,8 +44,8 @@
     "title_emph": "sweats",
     "title_post": "the details.",
     "lede": "I care about how an interface feels under the finger — the rhythm of an animation, the weight of a typeface, the quiet of an empty state.",
-    "p1": "I've spent the last few years building e-commerce experiences in <strong>VTEX</strong> and shipping React apps end-to-end. Before that, I co-built the developer-evaluation platform at <strong>Codeable</strong>, where I learned to balance speed with the kind of polish a learner actually trusts.",
-    "p2": "Outside of work I'm usually in the browser dev tools, the terminal, or — more recently — a sketchbook trying to design before I code.",
+    "p1": "Right now I build <strong>Svelte</strong> web components for an enterprise event platform at <strong>RainFocus</strong> — work that ships across some of the world's largest tech conferences — while also developing a <strong>Next.js</strong> B2B SaaS for lead management. Before that I worked full-stack: <strong>React</strong> front ends backed by <strong>Scala</strong> on a dealership platform, and my first role doing e-commerce on <strong>VTEX</strong>.",
+    "p2": "I started out as a mechatronics engineer before moving into software through a full-stack bootcamp — probably why I still like understanding the system behind the surface. Outside of work I'm usually in the dev tools, the terminal, or a sketchbook trying to design before I code.",
     "stat_years": "Years building",
     "stat_projects": "Shipped projects",
     "stat_coffee": "Cups of coffee"
@@ -55,33 +56,43 @@
     "title_post": "good.",
     "email": "luis96raul1@gmail.com",
     "rights": "© 2026 Luis Talavera. All rights reserved.",
-    "built": "Designed & built in Lima"
+    "built": "Designed & built in Arequipa"
   },
   "works": {
+    "rainfocus": {
+      "type": "Event platform",
+      "name": "RainFocus",
+      "description": "My current role — building <strong>Svelte</strong> web components and styling platform widgets for an enterprise event-management suite. The work has shipped across events for <strong>Salesforce</strong> (Dreamforce, World Tour, Agentforce, TDX), <strong>ServiceNow</strong> (Knowledge, World Forum), <strong>Zscaler</strong> (Zenith Live), <strong>Anyscale</strong> (Ray Summit), <strong>Workday</strong> (Rising, DevCon), <strong>Autodesk</strong> (GEMS), and <strong>Meta</strong>, <strong>GitHub</strong>, <strong>Jamf</strong> and <strong>IBM</strong>, among others."
+    },
+    "leadcadi": {
+      "type": "B2B SaaS",
+      "name": "Leadcadi",
+      "description": "Frontend for a lead & campaign management platform built on <strong>Next.js</strong>. I work with Server and Client Components, dynamic filtering and controlled forms, collaborating closely with the design and backend teams."
+    },
+    "dealerpro": {
+      "type": "Dealer SaaS",
+      "name": "DealerPro",
+      "description": "Full-stack work on a dealership management system. I built the <strong>React</strong> interfaces and integrated the <strong>Scala</strong> APIs, also contributing to the backend with <strong>Play Framework</strong> and to frontend architecture and usability."
+    },
     "footloose": {
       "type": "E-commerce",
       "name": "Footloose",
-      "description": "Current work — frontend on the <strong>Footloose</strong> e-commerce store. I lead redesigns, mobile adaptations and new landings on <strong>VTEX</strong>. Where VTEX components fall short, I drop into custom <strong>React</strong> to keep the brand and the conversion intact."
+      "description": "Where I started — frontend on the <strong>Footloose</strong> e-commerce store. Redesigns and new landing pages on <strong>VTEX</strong>, plus custom <strong>React</strong> components when the defaults fell short, and email design in markdown."
     },
     "codeable": {
       "type": "EdTech platform",
       "name": "Codeable evaluation",
       "description": "Owned the <strong>React</strong> frontend of the registration + evaluation flow for <strong>Codeable</strong> applicants. Scored coding and English: timed attempts, an embedded code editor, retry logic. The <strong>Ruby on Rails</strong> API handled the heavy validation."
-    },
-    "personal": {
-      "type": "Personal lab",
-      "name": "This site",
-      "description": "An ongoing playground I rebuild whenever I learn something new. Currently <strong>React + Vite + Framer Motion + Lenis</strong>. <a href=\"https://github.com/luis96raul1/luis96raul1.github.io\" target=\"_blank\" rel=\"noreferrer\">Source is on GitHub</a> — feedback always welcome."
     }
   },
   "skill": {
     "frontend": {
       "name": "Frontend",
-      "description": "<strong>React</strong> for interactive surfaces, <strong>TypeScript</strong> for guard rails, SCSS or Tailwind for systems. I lean on <strong>Framer Motion</strong> for motion and care a lot about the small details — focus rings, scroll behavior, prefers-reduced-motion."
+      "description": "<strong>React</strong> and <strong>Svelte</strong> for interactive surfaces — including reusable <strong>web components</strong> — with <strong>TypeScript</strong> for guard rails and SCSS or Tailwind for systems. I care a lot about the small details: focus rings, scroll behavior, prefers-reduced-motion."
     },
     "backend": {
       "name": "Backend",
-      "description": "Started on <strong>Ruby</strong> + <strong>Rails</strong> — full-stack apps and APIs through my Codeable years. Relational (<strong>PostgreSQL</strong>) and document (<strong>Firebase</strong>) stores. Comfortable owning a small API end-to-end."
+      "description": "A full-stack background: I've integrated and contributed to <strong>Scala</strong> APIs on <strong>Play Framework</strong>, and built apps with <strong>Ruby on Rails</strong>. Comfortable owning a small API end-to-end and speaking the backend's language."
     },
     "github": {
       "name": "GitHub & CI",

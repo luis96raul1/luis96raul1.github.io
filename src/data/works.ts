@@ -2,8 +2,6 @@ import footloose1 from '../assets/images/footloose-main.png';
 import footloose2 from '../assets/images/footloose-store.png';
 import codeable1 from '../assets/images/CodeableTesting1.png';
 import codeable2 from '../assets/images/CodeableTesting2.png';
-import personal1 from '../assets/images/personalPage1.png';
-import personal2 from '../assets/images/personalPage2.png';
 
 export type Work = {
   id: string;
@@ -15,17 +13,36 @@ export type Work = {
   year: string;
   /** Tech chips */
   stack: string[];
-  /** Two screenshots — back + front overlap */
-  shots: [string, string];
+  /** Two screenshots — back + front overlap. Optional until art is ready. */
+  shots?: [string, string];
 };
 
 export const works: Work[] = [
   {
+    id: 'rainfocus',
+    key: 'rainfocus',
+    url: 'https://www.rainfocus.com/',
+    year: '2023 — present',
+    stack: ['Svelte', 'Web Components', 'JavaScript', 'CSS']
+  },
+  {
+    id: 'leadcadi',
+    key: 'leadcadi',
+    year: '2024 — present',
+    stack: ['Next.js', 'React', 'TypeScript', 'SSR']
+  },
+  {
+    id: 'dealerpro',
+    key: 'dealerpro',
+    year: '2022 — 2023',
+    stack: ['React', 'Scala', 'Play Framework']
+  },
+  {
     id: 'footloose',
     key: 'footloose',
     url: 'https://www.footloose.pe/',
-    year: '2024 — present',
-    stack: ['VTEX', 'React', 'TypeScript', 'SCSS'],
+    year: '2022',
+    stack: ['VTEX', 'React', 'Vite', 'SCSS'],
     shots: [footloose1, footloose2]
   },
   {
@@ -35,12 +52,5 @@ export const works: Work[] = [
     year: '2022',
     stack: ['React', 'Ruby on Rails', 'PostgreSQL'],
     shots: [codeable1, codeable2]
-  },
-  {
-    id: 'personal',
-    key: 'personal',
-    year: 'Ongoing',
-    stack: ['React', 'Vite', 'Framer Motion', 'SCSS'],
-    shots: [personal1, personal2]
   }
 ];

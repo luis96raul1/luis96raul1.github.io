@@ -118,6 +118,46 @@
     @media (max-width: t.$bp-md) { aspect-ratio: 4 / 3; }
   }
 
+  &__placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    border-radius: var(--radius-md);
+    border: 1px dashed var(--border);
+    background:
+      repeating-linear-gradient(
+        135deg,
+        transparent,
+        transparent 14px,
+        var(--surface) 14px,
+        var(--surface) 15px
+      ),
+      var(--surface);
+    transform: rotate(-1.4deg);
+
+    &-name {
+      font-family: var(--font-display);
+      font-weight: 320;
+      font-variation-settings: 'opsz' 144, 'SOFT' 70;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      line-height: 1;
+      letter-spacing: -0.02em;
+      color: var(--text-soft);
+    }
+
+    &-note {
+      font-family: var(--font-mono, var(--font-body));
+      font-size: 0.68rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+  }
+
   &__shot {
     position: absolute;
     border-radius: var(--radius-md);

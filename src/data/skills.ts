@@ -16,13 +16,13 @@ export const skills: Skill[] = [
     id: 'frontend',
     key: 'frontend',
     icon: javascript,
-    tags: ['React', 'TypeScript', 'Next.js', 'SCSS', 'Framer Motion']
+    tags: ['React', 'Svelte', 'Next.js', 'TypeScript', 'Tailwind']
   },
   {
     id: 'backend',
     key: 'backend',
     icon: rails,
-    tags: ['Ruby on Rails', 'PostgreSQL', 'Firebase', 'REST APIs']
+    tags: ['Scala', 'Play Framework', 'Ruby on Rails', 'REST APIs']
   },
   {
     id: 'github',

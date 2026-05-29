@@ -12,14 +12,14 @@
     "title_pre":  "Software",
     "title_emph": "con oficio",
     "title_post": "para la web moderna.",
-    "lede": "Soy Luis Talavera — desarrollador construyendo interfaces cuidadas y rápidas desde Lima, Perú.",
+    "lede": "Soy Luis Talavera — desarrollador construyendo interfaces cuidadas y rápidas desde Arequipa, Perú.",
     "cta_primary": "Ver mi trabajo",
     "cta_secondary": "Conocer más",
     "scroll": "Desplázate",
     "stack_label": "Hoy trabajo con",
-    "stack_value": "React · TypeScript · VTEX",
+    "stack_value": "Svelte · Next.js · TypeScript",
     "location_label": "Desde",
-    "location_value": "Lima, Perú"
+    "location_value": "Arequipa, Perú"
   },
   "work": {
     "eyebrow": "Trabajos seleccionados",
@@ -28,7 +28,8 @@
     "title_post": ".",
     "lede": "Una pequeña ruta de productos, herramientas y páginas que he diseñado o lanzado los últimos años.",
     "view_site": "Ver sitio",
-    "case_study": "Detalle"
+    "case_study": "Detalle",
+    "coming_soon": "Imágenes en camino"
   },
   "skills": {
     "eyebrow": "Capacidades",
@@ -43,8 +44,8 @@
     "title_emph": "cuida",
     "title_post": "los detalles.",
     "lede": "Me importa cómo se siente una interfaz bajo el dedo — el ritmo de una animación, el peso de una tipografía, la calma de un estado vacío.",
-    "p1": "Los últimos años he construido experiencias e-commerce en <strong>VTEX</strong> y lanzado apps React de extremo a extremo. Antes co-construí la plataforma de evaluación en <strong>Codeable</strong>, donde aprendí a equilibrar velocidad con el tipo de pulido que un postulante realmente confía.",
-    "p2": "Fuera del trabajo suelo estar en las dev tools, en la terminal o — más recientemente — en un cuaderno tratando de diseñar antes de codear.",
+    "p1": "Ahora mismo construyo <strong>web components</strong> con <strong>Svelte</strong> para una plataforma de eventos empresariales en <strong>RainFocus</strong> — un trabajo que se despliega en algunas de las conferencias de tecnología más grandes del mundo — además de desarrollar un SaaS B2B de gestión de leads en <strong>Next.js</strong>. Antes trabajé full-stack: front ends en <strong>React</strong> respaldados por <strong>Scala</strong> en una plataforma de concesionarios, y mi primer rol haciendo e-commerce sobre <strong>VTEX</strong>.",
+    "p2": "Empecé como ingeniero mecatrónico antes de pasar al software por un bootcamp full-stack — quizá por eso todavía me gusta entender el sistema detrás de la superficie. Fuera del trabajo suelo estar en las dev tools, la terminal o un cuaderno tratando de diseñar antes de codear.",
     "stat_years": "Años construyendo",
     "stat_projects": "Proyectos lanzados",
     "stat_coffee": "Tazas de café"
@@ -55,33 +56,43 @@
     "title_post": "bueno.",
     "email": "luis96raul1@gmail.com",
     "rights": "© 2026 Luis Talavera. Todos los derechos reservados.",
-    "built": "Diseñado y construido en Lima"
+    "built": "Diseñado y construido en Arequipa"
   },
   "works": {
+    "rainfocus": {
+      "type": "Plataforma de eventos",
+      "name": "RainFocus",
+      "description": "Mi rol actual — construyo <strong>web components</strong> con <strong>Svelte</strong> y estilo widgets de una plataforma de gestión de eventos empresariales. El trabajo se ha desplegado en eventos de <strong>Salesforce</strong> (Dreamforce, World Tour, Agentforce, TDX), <strong>ServiceNow</strong> (Knowledge, World Forum), <strong>Zscaler</strong> (Zenith Live), <strong>Anyscale</strong> (Ray Summit), <strong>Workday</strong> (Rising, DevCon), <strong>Autodesk</strong> (GEMS), y <strong>Meta</strong>, <strong>GitHub</strong>, <strong>Jamf</strong> e <strong>IBM</strong>, entre otros."
+    },
+    "leadcadi": {
+      "type": "SaaS B2B",
+      "name": "Leadcadi",
+      "description": "Frontend de una plataforma de gestión de leads y campañas construida en <strong>Next.js</strong>. Trabajo con Server y Client Components, filtros dinámicos y formularios controlados, en estrecha colaboración con los equipos de diseño y backend."
+    },
+    "dealerpro": {
+      "type": "SaaS para concesionarios",
+      "name": "DealerPro",
+      "description": "Trabajo full-stack en un sistema de gestión de concesionarios. Construí las interfaces en <strong>React</strong> e integré las APIs en <strong>Scala</strong>, además de colaborar en el backend con <strong>Play Framework</strong> y en la arquitectura y usabilidad del frontend."
+    },
     "footloose": {
       "type": "E-commerce",
       "name": "Footloose",
-      "description": "Mi trabajo actual — frontend de la tienda <strong>Footloose</strong>. Lidero rediseños, adaptaciones mobile y nuevas landings sobre <strong>VTEX</strong>. Cuando los componentes de VTEX no alcanzan, bajo a <strong>React</strong> a medida para mantener marca y conversión."
+      "description": "Donde empecé — frontend de la tienda <strong>Footloose</strong>. Rediseños y nuevas landings sobre <strong>VTEX</strong>, además de componentes <strong>React</strong> a medida cuando los predeterminados no alcanzaban, y diseño de correos en markdown."
     },
     "codeable": {
       "type": "Plataforma EdTech",
       "name": "Evaluación Codeable",
       "description": "Estuve a cargo del frontend en <strong>React</strong> del flujo de registro + evaluación de postulantes a <strong>Codeable</strong>. Puntaje de código e inglés: intentos cronometrados, editor embebido, lógica de reintentos. La API en <strong>Ruby on Rails</strong> hacía las validaciones pesadas."
-    },
-    "personal": {
-      "type": "Laboratorio personal",
-      "name": "Este sitio",
-      "description": "Un playground que vuelvo a construir cada vez que aprendo algo nuevo. Hoy: <strong>React + Vite + Framer Motion + Lenis</strong>. <a href=\"https://github.com/luis96raul1/luis96raul1.github.io\" target=\"_blank\" rel=\"noreferrer\">El código está en GitHub</a> — feedback siempre bienvenido."
     }
   },
   "skill": {
     "frontend": {
       "name": "Frontend",
-      "description": "<strong>React</strong> para superficies interactivas, <strong>TypeScript</strong> como red de seguridad, SCSS o Tailwind para sistemas. Uso <strong>Framer Motion</strong> para el movimiento y me importan los detalles — anillos de foco, scroll, prefers-reduced-motion."
+      "description": "<strong>React</strong> y <strong>Svelte</strong> para superficies interactivas — incluyendo <strong>web components</strong> reutilizables — con <strong>TypeScript</strong> como red de seguridad y SCSS o Tailwind para sistemas. Me importan los detalles: anillos de foco, scroll, prefers-reduced-motion."
     },
     "backend": {
       "name": "Backend",
-      "description": "Empecé en <strong>Ruby</strong> + <strong>Rails</strong> — apps full-stack y APIs durante mis años en Codeable. Bases relacionales (<strong>PostgreSQL</strong>) y documentales (<strong>Firebase</strong>). Cómodo manteniendo una API pequeña de inicio a fin."
+      "description": "Una base full-stack: he integrado y aportado a APIs en <strong>Scala</strong> sobre <strong>Play Framework</strong>, y construido apps con <strong>Ruby on Rails</strong>. Cómodo manteniendo una API pequeña de inicio a fin y hablando el lenguaje del backend."
     },
     "github": {
       "name": "GitHub y CI",
