@@ -1,16 +1,90 @@
+import { useLayoutEffect, useRef } from 'react';
 import { Trans, useTranslation } from 'react-i18next';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { works } from '../data/works';
 import { Reveal } from '../components/animations/Reveal';
 import { Icon } from '../components/Icon';
 import { useLightbox } from '../store/LightboxContext';
 
+gsap.registerPlugin(ScrollTrigger);
+
 export function Work() {
   const { t } = useTranslation();
   const { open } = useLightbox();
+  const pinRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const progressRef = useRef<HTMLSpanElement>(null);
+
+  useLayoutEffect(() => {
+    const pin = pinRef.current;
+    const track = trackRef.current;
+    if (!pin || !track) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const ctx = gsap.context(() => {
+      const mm = gsap.matchMedia();
+
+      // Desktop: pin the section and translate the track horizontally as
+      // the user scrolls vertically — a scroll-driven carousel.
+      mm.add('(min-width: 821px)', () => {
+        const panels = gsap.utils.toArray<HTMLElement>('.case', track);
+        const getDistance = () => track.scrollWidth - window.innerWidth;
+
+        const drift = gsap.to(track, {
+          x: () => -getDistance(),
+          ease: 'none'
+        });
+
+        ScrollTrigger.create({
+          trigger: pin,
+          start: 'top top',
+          end: () => '+=' + getDistance(),
+          pin: true,
+          scrub: 1,
+          invalidateOnRefresh: true,
+          animation: drift,
+          onUpdate: (self) => {
+            if (progressRef.current) gsap.set(progressRef.current, { scaleX: self.progress });
+          }
+        });
+
+        // Reveal each panel as it enters the viewport horizontally.
+        panels.forEach((panel) => {
+          gsap.from(panel, {
+            opacity: 0,
+            y: 48,
+            duration: 0.6,
+            ease: 'power2.out',
+            scrollTrigger: {
+              trigger: panel,
+              containerAnimation: drift,
+              start: 'left 85%',
+              toggleActions: 'play none none reverse'
+            }
+          });
+        });
+      });
+
+      // Mobile / tablet: keep the classic vertical stack with fade-ins.
+      mm.add('(max-width: 820px)', () => {
+        gsap.utils.toArray<HTMLElement>('.case', track).forEach((panel) => {
+          gsap.from(panel, {
+            opacity: 0,
+            y: 40,
+            duration: 0.7,
+            ease: 'power2.out',
+            scrollTrigger: { trigger: panel, start: 'top 85%' }
+          });
+        });
+      });
+    }, pinRef);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section id="work" className="section work">
-      <div className="watermark" aria-hidden="true"><span>{t('work.eyebrow')}</span></div>
       <div className="container" style={{ position: 'relative' }}>
         <Reveal as="div" className="section__head">
           <div className="section__index">
@@ -23,10 +97,12 @@ export function Work() {
             <p className="lede" style={{ marginTop: '1.5rem' }}>{t('work.lede')}</p>
           </div>
         </Reveal>
+      </div>
 
-        <div className="work__list">
+      <div className="work__pin" ref={pinRef}>
+        <div className="work__track" ref={trackRef}>
           {works.map((w, i) => (
-            <Reveal key={w.id} as="article" className={`case ${i % 2 === 1 ? 'case--reverse' : ''}`}>
+            <article key={w.id} className={`case ${i % 2 === 1 ? 'case--reverse' : ''}`}>
               <div className="case__copy-wrap">
                 <div className="case__index">{String(i + 1).padStart(2, '0')} / {String(works.length).padStart(2, '0')}</div>
 
@@ -87,8 +163,12 @@ export function Work() {
                   </div>
                 )}
               </div>
-            </Reveal>
+            </article>
           ))}
+        </div>
+
+        <div className="work__progress" aria-hidden="true">
+          <span ref={progressRef} className="work__progress-bar" />
         </div>
       </div>
     </section>

@@ -1,5 +1,9 @@
 import { useEffect } from 'react';
 import Lenis from 'lenis';
+import gsap from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export function useSmoothScroll() {
   useEffect(() => {
@@ -13,15 +17,16 @@ export function useSmoothScroll() {
       touchMultiplier: 1.2
     });
 
-    let rafId = 0;
-    const raf = (time: number) => {
-      lenis.raf(time);
-      rafId = requestAnimationFrame(raf);
-    };
-    rafId = requestAnimationFrame(raf);
+    // Keep ScrollTrigger in sync with Lenis so pinned / scrubbed
+    // animations (e.g. the Work horizontal carousel) track smooth scroll.
+    lenis.on('scroll', ScrollTrigger.update);
+
+    const onTick = (time: number) => lenis.raf(time * 1000);
+    gsap.ticker.add(onTick);
+    gsap.ticker.lagSmoothing(0);
 
     return () => {
-      cancelAnimationFrame(rafId);
+      gsap.ticker.remove(onTick);
       lenis.destroy();
     };
   }, []);

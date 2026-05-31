@@ -3,9 +3,58 @@
 .work {
   position: relative;
 
-  &__list {
+  // Vertical stack by default (mobile / reduced-motion fallback).
+  &__pin {
+    position: relative;
+  }
+
+  &__track {
     display: flex;
     flex-direction: column;
+  }
+
+  // Desktop: the pin region fills the viewport and the track slides
+  // horizontally (driven by GSAP ScrollTrigger in Work.tsx). Gated on
+  // no-preference so reduced-motion users keep the readable vertical stack.
+  @media (min-width: 821px) and (prefers-reduced-motion: no-preference) {
+    &__pin {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    &__track {
+      flex-direction: row;
+      flex-wrap: nowrap;
+      align-items: center;
+      will-change: transform;
+      padding-inline: clamp(2rem, 8vw, 9rem);
+      gap: clamp(3rem, 7vw, 8rem);
+    }
+  }
+
+  // Scroll-progress indicator for the carousel.
+  &__progress {
+    position: absolute;
+    left: clamp(2rem, 8vw, 9rem);
+    right: clamp(2rem, 8vw, 9rem);
+    bottom: clamp(2rem, 5vh, 3.5rem);
+    height: 2px;
+    background: var(--border);
+    overflow: hidden;
+    z-index: 3;
+
+    &-bar {
+      display: block;
+      height: 100%;
+      width: 100%;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: left center;
+    }
+
+    @media (max-width: t.$bp-md) { display: none; }
   }
 }
 
@@ -19,6 +68,15 @@
   position: relative;
 
   &:last-child { border-bottom: 1px solid var(--border-soft); }
+
+  // Each case becomes a fixed-width panel in the horizontal track.
+  @media (min-width: 821px) and (prefers-reduced-motion: no-preference) {
+    flex: 0 0 auto;
+    width: min(84vw, 1040px);
+    padding-block: 0;
+    border-top: 0;
+    &:last-child { border-bottom: 0; }
+  }
 
   @media (max-width: t.$bp-md) {
     grid-template-columns: 1fr;

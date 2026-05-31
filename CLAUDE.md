@@ -5,49 +5,69 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```bash
-npm start          # dev server at localhost:3000
-npm run build      # production build
-npm run deploy     # build + push to gh-pages branch (deploys to https://luis96raul1.github.io)
-npm test           # run tests (watch mode)
+npm install        # install deps
+npm run dev        # Vite dev server (http://localhost:3000)
+npm run build      # type-check + production build → dist/
+npm run preview    # serve the production build locally
+npm run deploy     # build + push dist/ to gh-pages branch (publishes to https://luis96raul1.github.io)
 ```
 
 ## Architecture
 
-Single-page portfolio built with Create React App, deployed to GitHub Pages. No React Router — navigation is hash-based (`window.location.replace('#work')`). The page is a vertical stack of three full-viewport sections rendered in `App.js`:
+Single-page editorial portfolio. **Vite + React 18 + TypeScript**, deployed to GitHub Pages. No router — sections are stacked on the same page; the header highlights the active one via `IntersectionObserver`. Smooth scrolling is handled by **Lenis**; enter/section animations by **Framer Motion**.
 
 ```
-WrapperContext
-  ├── Modal          (image zoom overlay)
-  ├── Header         (fixed nav, hamburger on mobile)
-  ├── Title          (hero section with 3D cube animation)
-  ├── Work           (carousel of work projects)
-  └── Skills         (carousel of skills)
+App
+  ├── LightboxProvider                 (single piece of UI state: { src, open, close })
+  │   ├── Header                       (fixed nav, mobile drawer, active-section highlight, language toggle)
+  │   ├── main
+  │   │     ├── Hero                   (#home — landing, staggered word reveal, 3D cube)
+  │   │     ├── Work                   (#work — stacked editorial case studies, image lightbox triggers)
+  │   │     ├── Skills                 (#skills — 2-col card grid, reveal-on-scroll stagger)
+  │   │     └── About                  (#about — bio + stats)
+  │   ├── Footer                       (#contact — large display headline + email + socials)
+  │   └── Lightbox                     (fullscreen image preview portal)
 ```
 
-### State management
+### Folder layout
 
-Two React contexts, both provided by `WrapperContext`:
-- `languageContext` — `language` (`'en'` | `'es'`), toggled from the header. All bilingual content is stored inline as `{ en: ..., es: ... }` objects inside the `works` and `skills` arrays in `Work.js` and `Skills.js`.
-- `ModalContext` — `fullShow` (either `false` or the `src` URL string of the image to enlarge). `Header` reads this to lower its z-index below the modal overlay.
+| Path                        | Purpose                                                                 |
+| ---                         | ---                                                                     |
+| `src/sections/`             | Page-level sections (Hero, Work, Skills, About, Footer). One per file.  |
+| `src/components/`           | Reusable UI components (Header, Lightbox, Icon).                        |
+| `src/components/animations/`| Reveal, RevealStagger/StaggerItem, SplitWords, Typewriter primitives.   |
+| `src/hooks/`                | useSmoothScroll (Lenis bootstrap), useActiveSection, useScrolled.       |
+| `src/store/`                | React Context stores. Today only `LightboxContext`.                     |
+| `src/data/`                 | Static content: `works.ts`, `skills.ts`, `nav.ts`. Bilingual *copy* lives in `src/i18n/locales/{en,es}.json`, keyed by entry. |
+| `src/i18n/`                 | `index.ts` (init + `localStorage` persistence) + `locales/{en,es}.json`.|
+| `src/styles/`               | SCSS partials, all imported by `index.scss`. `_tokens.scss` is the design system (CSS variables + breakpoints). |
+| `src/assets/`               | Static images + (legacy) icons. Prefer the inline `<Icon name="…">` component for new SVGs. |
 
-### Carousels
+### State
 
-Both `Work` and `Skills` use the same custom carousel pattern: `useReducer` with `currentPageReducer` (actions: `set`, `next`, `previous`), plus a `lastPage` state that tracks slide direction for enter/exit animations. Bootstrap carousel CSS classes are used for markup structure, but the JS logic is entirely custom.
+There's no global state library — just one `LightboxContext` (`{ src, open, close }`) for the image preview. Language state lives in `i18next` and is persisted to `localStorage` under `lr-lang`. Active-section state is derived from scroll position by `useActiveSection`.
 
-Shared carousel sub-components:
-- `CarouselButtons` — prev/next arrow controls
-- `CarouselIndicator` — dot indicators, also handles direct jump via `set` dispatch
+### Animation system
+
+- **Smooth scroll**: `useSmoothScroll()` in `App.tsx` boots a Lenis instance (skipped when `prefers-reduced-motion` is set).
+- **Section reveals**: `<Reveal>` wraps a node and fades + translates it in when it enters the viewport. `<RevealStagger>` + `<StaggerItem>` stagger children — used by the skills grid.
+- **Hero**: word-by-word stagger in the title, `<Typewriter>` for the lede, mounted with `motion` `initial`/`animate`.
+- **Header**: `AnimatePresence` for the mobile drawer; `useScrolled` toggles the blurred glass shell.
+- **Lightbox**: `AnimatePresence` portal with backdrop fade + frame scale.
+- All animations check `useReducedMotion()` or `prefers-reduced-motion` and short-circuit.
 
 ### Styling
 
-The codebase mixes two CSS-in-JS libraries — both are intentional:
-- `@emotion/react` / `@emotion/styled` — used in most page-level components (`Title`, `ShowData`). Requires the `/** @jsxImportSource @emotion/react */` pragma at the top of any file that uses the `css` prop directly.
-- `styled-components` — used in `Header.js` and `TitleMessageAnimator.js`.
+Pure SCSS — no CSS-in-JS. All visual tokens are CSS custom properties declared in `:root` inside `_tokens.scss` (palette, fonts, radii, easings, breakpoints). SCSS breakpoint *variables* (`$bp-sm`, `$bp-md`…) are only used inside `@media` queries. Use BEM-ish class names (`.case__shot--front`) — they're scoped enough without modules.
 
-Global styles (fonts, scrollbar, carousel layout, responsive breakpoints) live in `src/assets/styles/index.css`.
-
-Animations come from `animate.css` classes (e.g. `animate__backInRight`, `animate__zoomIn`) applied conditionally in `ShowData` and `Header`.
+Fonts are loaded from Google Fonts in `index.html` (**Fraunces** variable serif for display, **Geist** for body/mono). Don't import fonts inside SCSS — keep the `<link>` so the preconnect hints work.
 
 ### Adding content
 
-To add a new work item or skill, append an object to the `works` array in `src/pages/Work.js` or the `skills` array in `src/pages/Skills.js`. Each entry needs `id` (sequential integer), bilingual `description` fields, and imported image references. Import new images via the barrel files in `src/components/imagesImport/`.
+- **New work**: append a `Work` to `works` in `src/data/works.ts` (set `key`, `url`, `year`, `stack`, `shots`). Add a matching `works.<key>` block to both `en.json` and `es.json` (`type`, `name`, `description` — HTML tags in description go through `<Trans>` so `<strong>` / `<a>` work).
+- **New skill**: append a `Skill` to `src/data/skills.ts` and a `skill.<key>` block to both locale files.
+- **New section/route**: add to `src/data/nav.ts` (drives both the desktop nav and mobile drawer), then add a section component with matching `id`.
+
+### Deploy
+
+`npm run deploy` runs `vite build` then `gh-pages -d dist`. The `homepage` field in `package.json` (`https://luis96raul1.github.io`) is the canonical URL.

@@ -7,7 +7,6 @@ export function Skills() {
 
   return (
     <section id="skills" className="section section--alt skills">
-      <div className="watermark" aria-hidden="true"><span>{t('skills.eyebrow')}</span></div>
       <div className="container" style={{ position: 'relative' }}>
         <Reveal as="div" className="section__head">
           <div className="section__index">
