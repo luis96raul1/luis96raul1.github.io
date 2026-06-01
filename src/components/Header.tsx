@@ -119,7 +119,7 @@ export function Header() {
               <button className="header__lang" onClick={() => i18n.changeLanguage(otherLang)}>
                 {t('header.lang_toggle')}
               </button>
-              <a href="mailto:luis96raul1@gmail.com">luis96raul1@gmail.com</a>
+              <a href="#contact" onClick={() => setOpen(false)}>{t('header.cta')}</a>
             </motion.div>
           </motion.div>
         )}

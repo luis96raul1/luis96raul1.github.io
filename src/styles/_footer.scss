@@ -9,35 +9,36 @@
 
   &__big {
     font-family: var(--font-display);
-    font-weight: 280;
-    font-style: italic;
-    font-variation-settings: 'opsz' 144, 'SOFT' 100;
+    font-weight: 440;
+    font-style: normal;
+    font-variation-settings: 'opsz' 96;
     font-size: clamp(3rem, 11vw, 9rem);
     line-height: 0.92;
     letter-spacing: -0.035em;
     color: var(--bg);
     max-width: 14ch;
 
-    em { color: var(--accent-soft); font-style: italic; }
+    em { color: var(--accent-soft); font-style: normal; font-weight: 700; }
   }
 
-  &__email {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 0.75rem;
-    margin-top: 2.5rem;
-    font-family: var(--font-display);
-    font-style: italic;
-    font-weight: 300;
-    font-size: clamp(1.5rem, 3vw, 2.2rem);
-    color: var(--bg);
-    border-bottom: 1px solid color-mix(in srgb, var(--bg) 35%, transparent);
-    padding-bottom: 0.5rem;
-    transition: color var(--t-fast), border-color var(--t-fast);
+  &__top {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+    gap: clamp(2rem, 6vw, 5rem);
+    align-items: start;
 
-    &:hover { color: var(--accent-soft); border-color: var(--accent-soft); }
+    @media (max-width: t.$bp-md) {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
 
-    svg { width: 22px; height: 22px; align-self: center; }
+  &__intro {
+    margin-top: 1.5rem;
+    font-size: clamp(1rem, 1.4vw, 1.15rem);
+    line-height: 1.6;
+    color: color-mix(in srgb, var(--bg) 72%, transparent);
+    max-width: 30ch;
   }
 
   &__row {
@@ -75,6 +76,147 @@
       background: var(--bg);
       border-color: var(--bg);
       transform: translateY(-2px);
+    }
+  }
+}
+
+// Contact form — lives on the dark footer, so fields read light-on-dark.
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+
+    @media (max-width: t.$bp-sm) { grid-template-columns: 1fr; }
+  }
+
+  // Off-screen spam trap.
+  &__honeypot {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &__error {
+    margin: -0.25rem 0 0;
+    font-size: 0.85rem;
+    color: #ff9d8c;
+  }
+
+  &__submit {
+    align-self: start;
+    margin-top: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    padding: 0.9rem 1.6rem;
+    border-radius: var(--radius-pill);
+    background: var(--bg);
+    color: var(--text);
+    border: 1px solid var(--bg);
+    cursor: pointer;
+    transition: transform var(--t-fast), background var(--t-fast), border-color var(--t-fast);
+
+    &:hover:not(:disabled) {
+      transform: translateY(-2px);
+      background: var(--accent-soft);
+      border-color: var(--accent-soft);
+    }
+
+    &:disabled { opacity: 0.55; cursor: default; }
+  }
+
+  &--done {
+    gap: 0.75rem;
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+    border: 1px solid color-mix(in srgb, var(--bg) 22%, transparent);
+    border-radius: var(--radius-md);
+    background: color-mix(in srgb, var(--bg) 6%, transparent);
+  }
+
+  &__done-title {
+    font-family: var(--font-display);
+    font-variation-settings: 'opsz' 96;
+    font-weight: 480;
+    font-size: clamp(1.6rem, 3vw, 2.2rem);
+    line-height: 1;
+    color: var(--bg);
+  }
+
+  &__done-copy {
+    color: color-mix(in srgb, var(--bg) 72%, transparent);
+    line-height: 1.6;
+    max-width: 40ch;
+  }
+
+  &__again {
+    align-self: start;
+    margin-top: 0.25rem;
+    background: none;
+    border: 0;
+    padding: 0;
+    color: var(--accent-soft);
+    font-family: var(--font-mono, var(--font-body));
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  &__label {
+    font-family: var(--font-mono, var(--font-body));
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: color-mix(in srgb, var(--bg) 62%, transparent);
+  }
+
+  &__input {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--bg);
+    background: color-mix(in srgb, var(--bg) 6%, transparent);
+    border: 1px solid color-mix(in srgb, var(--bg) 22%, transparent);
+    border-radius: var(--radius-sm);
+    padding: 0.8rem 0.9rem;
+    width: 100%;
+    transition: border-color var(--t-fast), background var(--t-fast);
+
+    &::placeholder { color: color-mix(in srgb, var(--bg) 38%, transparent); }
+
+    &:focus {
+      outline: none;
+      border-color: var(--accent-soft);
+      background: color-mix(in srgb, var(--bg) 10%, transparent);
+    }
+
+    &:disabled { opacity: 0.55; }
+
+    // Flag invalid fields only after the user has interacted / submitted.
+    &:user-invalid { border-color: #ff9d8c; }
+
+    &--area {
+      resize: vertical;
+      min-height: 7rem;
+      line-height: 1.6;
     }
   }
 }

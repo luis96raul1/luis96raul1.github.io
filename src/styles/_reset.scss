@@ -11,6 +11,8 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  // Offset anchor jumps for the fixed header (native scroll / reduced-motion).
+  scroll-padding-top: var(--header-h);
 }
 
 body {

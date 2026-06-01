@@ -1,10 +1,10 @@
 @use 'tokens' as t;
 
-// Display headings — Fraunces variable, soft serif, optical-sized.
+// Display headings — Bricolage Grotesque variable, optical-sized.
 .display, h1.display {
   font-family: var(--font-display);
-  font-weight: 360;
-  font-variation-settings: 'opsz' 144, 'SOFT' 80;
+  font-weight: 460;
+  font-variation-settings: 'opsz' 96;
   line-height: 0.95;
   letter-spacing: -0.025em;
   color: var(--text);
@@ -33,8 +33,8 @@
 
 .lede {
   font-family: var(--font-display);
-  font-weight: 300;
-  font-style: italic;
+  font-weight: 340;
+  font-style: normal;
   font-size: clamp(1.25rem, 1.8vw, 1.6rem);
   line-height: 1.45;
   color: var(--text-soft);
@@ -61,8 +61,8 @@
 
 .serif-italic {
   font-family: var(--font-display);
-  font-style: italic;
-  font-weight: 360;
+  font-style: normal;
+  font-weight: 560;
 }
 
 .numeric {

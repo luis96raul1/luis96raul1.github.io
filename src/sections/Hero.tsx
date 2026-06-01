@@ -78,7 +78,7 @@ export function Hero() {
               <a className="hero__social" href="https://www.linkedin.com/in/luis-talavera-llerena/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
                 <Icon name="linkedin" size={18} />
               </a>
-              <a className="hero__social" href="mailto:luis96raul1@gmail.com" aria-label="Email">
+              <a className="hero__social" href="#contact" aria-label="Contact">
                 <Icon name="mail" size={18} />
               </a>
             </div>

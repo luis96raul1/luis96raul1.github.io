@@ -59,8 +59,8 @@
 
     strong {
       font-family: var(--font-display);
-      font-weight: 360;
-      font-variation-settings: 'opsz' 24, 'SOFT' 60;
+      font-weight: 600;
+      font-variation-settings: 'opsz' 24;
       font-size: 1.05rem;
       letter-spacing: -0.01em;
       color: var(--text);
@@ -218,8 +218,8 @@
     gap: 1rem;
     padding: 0.6rem 0;
     font-family: var(--font-display);
-    font-weight: 320;
-    font-variation-settings: 'opsz' 144, 'SOFT' 70;
+    font-weight: 460;
+    font-variation-settings: 'opsz' 96;
     font-size: clamp(2.4rem, 11vw, 4rem);
     line-height: 1;
     letter-spacing: -0.025em;
@@ -235,7 +235,7 @@
       align-self: center;
     }
 
-    em { font-style: italic; color: var(--accent); }
+    em { font-style: normal; font-weight: 680; color: var(--accent); }
   }
 
   &__foot {

@@ -54,9 +54,26 @@
     "title_pre":  "Hagamos",
     "title_emph": "algo",
     "title_post": "bueno.",
-    "email": "luis96raul1@gmail.com",
     "rights": "© 2026 Luis Talavera. Todos los derechos reservados.",
-    "built": "Diseñado y construido en Arequipa"
+    "built": "Diseñado y construido en Arequipa",
+    "form": {
+      "intro": "¿Tienes un proyecto o una vacante en mente? Envíame un mensaje y te responderé.",
+      "name": "Nombre",
+      "name_ph": "Tu nombre",
+      "email": "Correo",
+      "email_ph": "tu@ejemplo.com",
+      "subject": "Asunto",
+      "subject_ph": "¿De qué se trata?",
+      "message": "Mensaje",
+      "message_ph": "Cuéntame un poco…",
+      "send": "Enviar mensaje",
+      "sending": "Enviando…",
+      "success_title": "Mensaje enviado.",
+      "success": "Gracias por escribir — te responderé lo antes posible.",
+      "send_another": "Enviar otro",
+      "error": "Algo salió mal. Inténtalo de nuevo.",
+      "not_configured": "El formulario aún no está configurado. Inténtalo más tarde."
+    }
   },
   "works": {
     "rainfocus": {

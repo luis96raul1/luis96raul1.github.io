@@ -109,8 +109,8 @@
 
   &__name {
     font-family: var(--font-display);
-    font-weight: 320;
-    font-variation-settings: 'opsz' 144, 'SOFT' 70;
+    font-weight: 480;
+    font-variation-settings: 'opsz' 96;
     font-size: clamp(2.1rem, 4.4vw, 3.8rem);
     line-height: 0.98;
     letter-spacing: -0.025em;
@@ -199,8 +199,8 @@
 
     &-name {
       font-family: var(--font-display);
-      font-weight: 320;
-      font-variation-settings: 'opsz' 144, 'SOFT' 70;
+      font-weight: 480;
+      font-variation-settings: 'opsz' 96;
       font-size: clamp(1.6rem, 3vw, 2.4rem);
       line-height: 1;
       letter-spacing: -0.02em;

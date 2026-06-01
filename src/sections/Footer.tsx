@@ -1,6 +1,7 @@
 import { useTranslation } from 'react-i18next';
 import { Reveal } from '../components/animations/Reveal';
 import { Icon } from '../components/Icon';
+import { ContactForm } from '../components/ContactForm';
 
 export function Footer() {
   const { t } = useTranslation();
@@ -8,16 +9,18 @@ export function Footer() {
   return (
     <footer id="contact" className="footer">
       <div className="container">
-        <Reveal as="div">
-          <h2 className="footer__big">
-            {t('contact.title_pre')} <em>{t('contact.title_emph')}</em> {t('contact.title_post')}
-          </h2>
+        <div className="footer__top">
+          <Reveal as="div">
+            <h2 className="footer__big">
+              {t('contact.title_pre')} <em>{t('contact.title_emph')}</em> {t('contact.title_post')}
+            </h2>
+            <p className="footer__intro">{t('contact.form.intro')}</p>
+          </Reveal>
 
-          <a className="footer__email" href={`mailto:${t('contact.email')}`}>
-            {t('contact.email')}
-            <Icon name="arrow-up-right" size={22} />
-          </a>
-        </Reveal>
+          <Reveal as="div" delay={0.1}>
+            <ContactForm />
+          </Reveal>
+        </div>
 
         <div className="footer__row">
           <div>{t('contact.rights')}</div>
@@ -31,11 +34,6 @@ export function Footer() {
             <li>
               <a className="footer__link" href="https://www.linkedin.com/in/luis-talavera-llerena/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
                 <Icon name="linkedin" />
-              </a>
-            </li>
-            <li>
-              <a className="footer__link" href={`mailto:${t('contact.email')}`} aria-label="Email">
-                <Icon name="mail" />
               </a>
             </li>
           </ul>

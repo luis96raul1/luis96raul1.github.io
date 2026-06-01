@@ -54,9 +54,26 @@
     "title_pre":  "Let's make",
     "title_emph": "something",
     "title_post": "good.",
-    "email": "luis96raul1@gmail.com",
     "rights": "© 2026 Luis Talavera. All rights reserved.",
-    "built": "Designed & built in Arequipa"
+    "built": "Designed & built in Arequipa",
+    "form": {
+      "intro": "Have a project or a role in mind? Send me a message and I'll get back to you.",
+      "name": "Name",
+      "name_ph": "Your name",
+      "email": "Email",
+      "email_ph": "you@example.com",
+      "subject": "Subject",
+      "subject_ph": "What's this about?",
+      "message": "Message",
+      "message_ph": "Tell me a little about it…",
+      "send": "Send message",
+      "sending": "Sending…",
+      "success_title": "Message sent.",
+      "success": "Thanks for reaching out — I'll reply as soon as I can.",
+      "send_another": "Send another",
+      "error": "Something went wrong. Please try again.",
+      "not_configured": "The contact form isn't configured yet. Please try again later."
+    }
   },
   "works": {
     "rainfocus": {

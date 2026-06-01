@@ -26,6 +26,10 @@ jobs:
       - run: npm ci --no-audit --no-fund
 
       - run: npm run build
+        env:
+          # Not secret — Vite inlines it into the public bundle. Set it as a
+          # repository Variable (Settings → Secrets and variables → Actions → Variables).
+          VITE_FORMSPREE_ID: ${{ vars.VITE_FORMSPREE_ID }}
 
       - uses: peaceiris/actions-gh-pages@v4
         with:

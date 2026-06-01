@@ -60,7 +60,7 @@ There's no global state library — just one `LightboxContext` (`{ src, open, cl
 
 Pure SCSS — no CSS-in-JS. All visual tokens are CSS custom properties declared in `:root` inside `_tokens.scss` (palette, fonts, radii, easings, breakpoints). SCSS breakpoint *variables* (`$bp-sm`, `$bp-md`…) are only used inside `@media` queries. Use BEM-ish class names (`.case__shot--front`) — they're scoped enough without modules.
 
-Fonts are loaded from Google Fonts in `index.html` (**Fraunces** variable serif for display, **Geist** for body/mono). Don't import fonts inside SCSS — keep the `<link>` so the preconnect hints work.
+Fonts are loaded from Google Fonts in `index.html` (**Bricolage Grotesque** variable grotesque for display — `opsz` 12–96, `wght` 200–800, no italic; **Geist** for body, **Geist Mono** for labels). Display emphasis is done with weight + accent color, not italic. Don't import fonts inside SCSS — keep the `<link>` so the preconnect hints work.
 
 ### Adding content
 

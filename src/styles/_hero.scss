@@ -48,8 +48,8 @@
 
   &__title {
     font-family: var(--font-display);
-    font-weight: 300;
-    font-variation-settings: 'opsz' 144, 'SOFT' 90;
+    font-weight: 440;
+    font-variation-settings: 'opsz' 96;
     font-size: clamp(3rem, 8.4vw, 7.5rem);
     line-height: 0.92;
     letter-spacing: -0.035em;
@@ -57,10 +57,9 @@
     margin: 0;
 
     em {
-      font-style: italic;
-      font-weight: 360;
+      font-style: normal;
+      font-weight: 720;
       color: var(--accent);
-      font-variation-settings: 'opsz' 144, 'SOFT' 100;
       display: inline-block;
     }
 
@@ -74,8 +73,8 @@
   &__lede {
     margin-top: 2rem;
     font-family: var(--font-display);
-    font-weight: 300;
-    font-style: italic;
+    font-weight: 340;
+    font-style: normal;
     font-size: clamp(1.05rem, 1.5vw, 1.35rem);
     line-height: 1.5;
     color: var(--text-soft);
