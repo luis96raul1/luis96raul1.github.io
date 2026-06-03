@@ -6,6 +6,7 @@ import { works } from '../data/works';
 import { Reveal } from '../components/animations/Reveal';
 import { Icon } from '../components/Icon';
 import { useLightbox } from '../store/LightboxContext';
+import { HEADER_OFFSET } from '../hooks/useSmoothScroll';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -29,7 +30,20 @@ export function Work() {
       // the user scrolls vertically — a scroll-driven carousel.
       mm.add('(min-width: 821px)', () => {
         const panels = gsap.utils.toArray<HTMLElement>('.case', track);
+        const allPanels = gsap.utils.toArray<HTMLElement>('.work__intro, .case', track);
         const getDistance = () => track.scrollWidth - window.innerWidth;
+
+        // Progress (0–1) at which each panel sits centered in the viewport.
+        // offsetLeft ignores the live GSAP transform, so these stay stable as
+        // the track slides; recomputed on demand so resize keeps them honest.
+        const snapPoints = () => {
+          const distance = getDistance();
+          if (distance <= 0) return [0];
+          const vw = window.innerWidth;
+          return allPanels.map((p) =>
+            gsap.utils.clamp(0, 1, (p.offsetLeft + p.offsetWidth / 2 - vw / 2) / distance)
+          );
+        };
 
         const drift = gsap.to(track, {
           x: () => -getDistance(),
@@ -38,12 +52,26 @@ export function Work() {
 
         ScrollTrigger.create({
           trigger: pin,
-          start: 'top top',
+          // Start the carousel once the section clears the fixed header — the
+          // same offset the nav/hero links land at, so the horizontal scroll is
+          // primed right where the click stops.
+          start: () => 'top top+=' + HEADER_OFFSET,
           end: () => '+=' + getDistance(),
           pin: true,
           scrub: 1,
           invalidateOnRefresh: true,
           animation: drift,
+          // When scrolling settles, glide to whichever panel is nearest centered.
+          snap: {
+            snapTo: (value) =>
+              snapPoints().reduce((a, b) =>
+                Math.abs(b - value) < Math.abs(a - value) ? b : a
+              ),
+            duration: { min: 0.15, max: 0.5 },
+            delay: 0.05,
+            ease: 'power2.inOut',
+            directional: false
+          },
           onUpdate: (self) => {
             if (progressRef.current) gsap.set(progressRef.current, { scaleX: self.progress });
           }
@@ -85,22 +113,20 @@ export function Work() {
 
   return (
     <section id="work" className="section work">
-      <div className="container" style={{ position: 'relative' }}>
-        <Reveal as="div" className="section__head">
-          <div className="section__index">
-            <span>01</span><span>—</span><span>{t('work.eyebrow')}</span>
-          </div>
-          <div>
-            <h2 className="section__title">
-              {t('work.title_pre')} <em>{t('work.title_emph')}</em>{t('work.title_post')}
-            </h2>
-            <p className="lede" style={{ marginTop: '1.5rem' }}>{t('work.lede')}</p>
-          </div>
-        </Reveal>
-      </div>
-
       <div className="work__pin" ref={pinRef}>
         <div className="work__track" ref={trackRef}>
+          <Reveal as="div" className="section__head work__intro">
+            <div className="section__index">
+              <span>01</span><span>—</span><span>{t('work.eyebrow')}</span>
+            </div>
+            <div>
+              <h2 className="section__title">
+                {t('work.title_pre')} <em>{t('work.title_emph')}</em>{t('work.title_post')}
+              </h2>
+              <p className="lede" style={{ marginTop: '1.5rem' }}>{t('work.lede')}</p>
+            </div>
+          </Reveal>
+
           {works.map((w, i) => (
             <article key={w.id} className={`case ${i % 2 === 1 ? 'case--reverse' : ''}`}>
               <div className="case__copy-wrap">

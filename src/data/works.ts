@@ -4,6 +4,8 @@ import codeable1 from '../assets/images/CodeableTesting1.png';
 import codeable2 from '../assets/images/CodeableTesting2.png';
 import rainfocus1 from '../assets/images/rainfocus-website.png';
 import rainfocus2 from '../assets/images/rainfocus-page-builder.png';
+import leadcadi1 from '../assets/images/leadcadi-dashboard.png';
+import leadcadi2 from '../assets/images/leadcadi-lead-table.png';
 import dealerpro1 from '../assets/images/dealergo-page-builder.png';
 import dealerpro2 from '../assets/images/dealergo-page-builder-2.png';
 
@@ -34,7 +36,8 @@ export const works: Work[] = [
     id: 'leadcadi',
     key: 'leadcadi',
     year: '2024 — present',
-    stack: ['Next.js', 'React', 'TypeScript', 'SSR']
+    stack: ['Next.js', 'React', 'TypeScript', 'SSR'],
+    shots: [leadcadi1, leadcadi2]
   },
   {
     id: 'dealerpro',

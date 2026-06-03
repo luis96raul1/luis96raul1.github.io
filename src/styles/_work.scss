@@ -2,6 +2,9 @@
 
 .work {
   position: relative;
+  // Shared slide width — drives the case panels, the intro panel, and the
+  // track end-padding that lets the first/last slide centre like the rest.
+  --slide-w: min(84vw, 1040px);
 
   // Vertical stack by default (mobile / reduced-motion fallback).
   &__pin {
@@ -17,6 +20,11 @@
   // horizontally (driven by GSAP ScrollTrigger in Work.tsx). Gated on
   // no-preference so reduced-motion users keep the readable vertical stack.
   @media (min-width: 821px) and (prefers-reduced-motion: no-preference) {
+    // Anchor the pin to the section top so the horizontal carousel begins the
+    // moment the section reaches the viewport — and the Work nav link lands
+    // right there instead of leaving dead vertical scroll before it kicks in.
+    &.section { padding-top: 0; }
+
     &__pin {
       height: 100vh;
       display: flex;
@@ -29,8 +37,25 @@
       flex-wrap: nowrap;
       align-items: center;
       will-change: transform;
-      padding-inline: clamp(2rem, 8vw, 9rem);
-      gap: clamp(3rem, 7vw, 8rem);
+      // Pad the ends by half the leftover viewport so the first and last
+      // slides can sit dead-centre, exactly like the ones in between.
+      padding-inline: max(2rem, calc((100vw - var(--slide-w)) / 2));
+      // Wide gap: a centered slide nearly fills the viewport, leaving only a
+      // sliver of the neighbouring slides peeking in on either side.
+      gap: clamp(4rem, 13vw, 15rem);
+    }
+  }
+
+  // The section heading rides inside the track as the first panel: it sits
+  // centered when you enter the section, then drifts left with the carousel.
+  &__intro {
+    padding-inline: var(--gutter);
+
+    @media (min-width: 821px) and (prefers-reduced-motion: no-preference) {
+      flex: 0 0 auto;
+      width: var(--slide-w);
+      padding-inline: 0;
+      margin-bottom: 0;
     }
   }
 
@@ -72,7 +97,7 @@
   // Each case becomes a fixed-width panel in the horizontal track.
   @media (min-width: 821px) and (prefers-reduced-motion: no-preference) {
     flex: 0 0 auto;
-    width: min(84vw, 1040px);
+    width: var(--slide-w);
     padding-block: 0;
     border-top: 0;
     &:last-child { border-bottom: 0; }
@@ -87,16 +112,16 @@
   &--reverse > * { direction: ltr; }
   @media (max-width: t.$bp-md) { &--reverse { direction: ltr; } }
 
+  // Editorial marker above the project name. Kept in normal flow (top of the
+  // copy column) so it never overlaps the centered content or, on reversed
+  // slides, the visuals — which an absolute corner position used to do.
   &__index {
-    position: absolute;
-    top: 1.25rem;
-    left: 0;
+    display: block;
+    margin-bottom: 1rem;
     font-family: var(--font-mono, var(--font-body));
     font-size: 0.72rem;
     letter-spacing: 0.18em;
     color: var(--text-muted);
-
-    @media (max-width: t.$bp-md) { position: static; }
   }
 
   &__head {

@@ -5,8 +5,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Keep sections clear of the fixed header when scrolled into view.
-const HEADER_OFFSET = 88;
+// Keep sections clear of the fixed header when scrolled into view. Exported so
+// the Work carousel can offset its pin start by the same amount and stay aligned.
+export const HEADER_OFFSET = 30;
 
 export function useSmoothScroll() {
   useEffect(() => {
@@ -42,7 +43,7 @@ export function useSmoothScroll() {
 
       e.preventDefault();
       lenis.scrollTo(target as HTMLElement, {
-        offset: -HEADER_OFFSET,
+        offset: HEADER_OFFSET,
         duration: 1.3,
         easing: (t) => 1 - Math.pow(1 - t, 4)
       });
