@@ -15,6 +15,7 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: github-pages
     steps:
       - uses: actions/checkout@v4
 
@@ -28,7 +29,9 @@ jobs:
       - run: npm run build
         env:
           # Not secret — Vite inlines it into the public bundle. Set it as a
-          # repository Variable (Settings → Secrets and variables → Actions → Variables).
+          # variable on the github-pages Environment (Settings → Environments →
+          # github-pages → Environment variables). The `environment:` key above
+          # is what scopes `vars.*` to that environment.
           VITE_FORMSPREE_ID: ${{ vars.VITE_FORMSPREE_ID }}
 
       - uses: peaceiris/actions-gh-pages@v4
