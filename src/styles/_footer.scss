@@ -19,6 +19,13 @@
     max-width: 14ch;
 
     em { color: var(--accent-soft); font-style: normal; font-weight: 700; }
+
+    // In the two-column row the headline sits beside the contact form; the
+    // 11vw scaling grows fast enough to crowd/overlap it on mid widths, so
+    // tame the size across this range.
+    @media (min-width: 821px) and (max-width: 1350px) {
+      font-size: clamp(3rem, 6.5vw, 7rem);
+    }
   }
 
   &__top {

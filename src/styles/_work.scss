@@ -106,6 +106,9 @@
   @media (max-width: t.$bp-md) {
     grid-template-columns: 1fr;
     gap: 2rem;
+    // The section sets no horizontal gutter, so give the stacked slides one
+    // here to keep copy and visuals off the screen edges on mobile.
+    padding-inline: var(--gutter);
   }
 
   &--reverse { direction: rtl; }
